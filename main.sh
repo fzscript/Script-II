@@ -22,18 +22,18 @@ setEnv() {
 
 initialize() {
     internalStorage="/storage/emulated/0"
-    storagePath="$internalStorage/Revancify"
+    storagePath="$internalStorage/Patcher"
     [ ! -d "$storagePath" ] && mkdir -p "$storagePath"
     [ ! -d apps ] && mkdir -p apps
     arch=$(getprop ro.product.cpu.abi)
-    repoDir="$HOME/Revancify"
-    header=(dialog --backtitle "Revancify | [Arch: $arch, SU: $rootStatus]" --no-shadow)
+    repoDir="$HOME/Patcher"
+    header=(dialog --backtitle "Patcher by FZ Project's | Arch: $arch ROOT: $rootStatus" --no-shadow)
     envFile=config.cfg
     [ ! -f "apps/.appSize" ] && : > "apps/.appSize"
 
-    forceUpdateCheckStatus="" riplibsRVX="" lightTheme="" patchMenuBeforePatching="" launchAppAfterMount="" allowVersionDowngrade="" fetchPreRelease=""
+    forceUpdateCheckStatus="" riplibsFZ="" lightTheme="" patchMenuBeforePatching="" launchAppAfterMount="" allowVersionDowngrade="" fetchPreRelease=""
     setEnv forceUpdateCheckStatus false init "$envFile"
-    setEnv riplibsRVX true init "$envFile"
+    setEnv riplibsFZ true init "$envFile"
     setEnv lightTheme false init "$envFile"
     setEnv patchMenuBeforePatching false init "$envFile"
     setEnv launchAppAfterMount true init "$envFile"
@@ -46,7 +46,7 @@ initialize() {
         source=$("${header[@]}" --begin 2 0 --title '| Source Selection Menu |' --no-cancel --ok-label "Done" --radiolist "Use arrow keys to navigate; Press Spacebar to select option" -1 -1 0 "${allSources[@]}" 2>&1 >/dev/tty)
         setEnv source "$source" update "$envFile"
     fi
-    [ "$rootStatus" == "root" ] && menuEntry="Uninstall Patched app" || menuEntry="Download Microg"
+    [ "$rootStatus" == "Y" ] && menuEntry="Uninstall Patched app" || menuEntry="Download microG"
 
     [ "$lightTheme" == "true" ] && theme=light || theme=Dark
     export DIALOGRC="$repoDir/configs/.dialogrc$theme"
@@ -103,7 +103,7 @@ getResources() {
     resourcesVars || return 1
     if [ -f "$patchesSource-patches-$patchesLatest.jar" ] && [ -f "$patchesSource-patches-$patchesLatest.json" ] && [ -f "$cliSource-cli-$cliLatest.jar" ] && [ -f "$integrationsSource-integrations-$integrationsLatest.apk" ] && [ "$cliSize" == "$cliAvailableSize" ] && [ "$patchesSize" == "$patchesAvailableSize" ] && [ "$integrationsSize" == "$integrationsAvailableSize" ]; then
         if [ "$(bash "$repoDir/fetch_patches.sh" "$source" online "$storagePath")" == "error" ]; then
-            "${header[@]}" --msgbox "Resources are successfully downloaded but Apkmirror API is not accessible. So, patches are not successfully synced.\nRevancify may crash.\n\nChange your network." 12 45
+            "${header[@]}" --msgbox "Resources are successfully downloaded but Apkmirror API is not accessible. So, patches are not successfully synced.\nPatcher may crash.\n\nChange your network." 12 45
             return 1
         fi
         "${header[@]}" --msgbox "Resources are already downloaded !!\n\nPatches are successfully synced." 12 45
@@ -135,7 +135,7 @@ getResources() {
     fi
 
     if [ "$(bash "$repoDir/fetch_patches.sh" "$source" online "$storagePath")" == "error" ]; then
-        "${header[@]}" --msgbox "Resources are successfully downloaded but Apkmirror API is not accessible. So, patches are not successfully synced.\nRevancify may crash.\n\nChange your network." 12 45
+        "${header[@]}" --msgbox "Resources are successfully downloaded but Apkmirror API is not accessible. So, patches are not successfully synced.\nPatcher may crash.\n\nChange your network." 12 45
         return 1
     fi
 
@@ -256,10 +256,10 @@ editPatchOptions() {
     done
 }
 
-rootInstall() {
+YInstall() {
     "${header[@]}" --infobox "Please Wait !!\nInstalling Patched $appName..." 12 45
     if ! su -mm -c "/system/bin/sh $repoDir/root_util.sh mount $pkgName $appName $appVer $sourceName" > /dev/null 2>&1; then
-        "${header[@]}" --msgbox "Installation Failed !!\nLogs saved to \"Internal-Storage/Revancify/install_log.txt\". Share the Install logs to developer." 12 45
+        "${header[@]}" --msgbox "Installation Failed !!\nLogs saved to \"Internal-Storage/Patcher/install_log.txt\". Share the Install logs to developer." 12 45
         return 1
     else
         "${header[@]}" --msgbox "$appName installed Successfully !!" 12 45
@@ -269,7 +269,7 @@ rootInstall() {
     fi
 }
 
-rootUninstall() {
+YUninstall() {
     selectApp normal || return 1
     su -mm -c "/system/bin/sh $repoDir/root_util.sh unmount $pkgName" &> /dev/null
     unmountStatus=$?
@@ -285,7 +285,7 @@ rootUninstall() {
     sleep 1
 }
 
-nonRootInstall() {
+NInstall() {
     "${header[@]}" --infobox "Copying $appName $sourceName $selectedVer to Internal Storage..." 12 45
     [ -d "$storagePath/$appName-$appVer" ] || mkdir -p "$storagePath/$appName-$appVer"
     sleep 0.5
@@ -303,7 +303,7 @@ refreshJson() {
         internet || return 1
         "${header[@]}" --infobox "Please Wait !!" 12 45
         if [ "$(bash "$repoDir/fetch_patches.sh" "$source" online "$storagePath")" == "error" ]; then
-            "${header[@]}" --msgbox "Oops !! Apkmirror API is not accessible. Patches are not successfully synced.\nRevancify may crash.\n\nChange your network." 12 45
+            "${header[@]}" --msgbox "Oops !! Apkmirror API is not accessible. Patches are not successfully synced.\nPatcher may crash.\n\nChange your network." 12 45
             return 1
         fi
     fi
@@ -327,7 +327,7 @@ checkResources() {
 }
 
 getAppVer() {
-    if [ "$rootStatus" == "root" ] && su -c "pm list packages | grep -q $pkgName" && [ "$allowVersionDowngrade" == "false" ]; then
+    if [ "$rootStatus" == "Y" ] && su -c "pm list packages | grep -q $pkgName" && [ "$allowVersionDowngrade" == "false" ]; then
         selectedVer=$(su -c dumpsys package "$pkgName" | sed -n '/versionName/s/.*=//p' | sed -n '1p')
         appVer="${selectedVer// /-}"
     fi
@@ -436,7 +436,7 @@ fetchCustomApk() {
     appName="$(sed 's/\./-/g;s/ /-/g' <<<"$fileAppName")"
     selectedVer=$(grep "package:" <<<"$aaptData" | sed -e 's/.*versionName='\''//' -e 's/'\'' platformBuildVersionName.*//')
     appVer="${selectedVer// /-}"
-    if [ "$rootStatus" == "root" ] && su -c "pm list packages | grep -q $pkgName" && [ "$allowVersionDowngrade" == "false" ]; then
+    if [ "$rootStatus" == "Y" ] && su -c "pm list packages | grep -q $pkgName" && [ "$allowVersionDowngrade" == "false" ]; then
         installedVer=$(su -c dumpsys package "$pkgName" | sed -n '/versionName/s/.*=//p' | sed -n '1p')
         if [ "$installedVer" != "$selectedVer" ]; then
             compareArray=("$selectedVer" "$installedVer")
@@ -501,7 +501,7 @@ downloadApp() {
         return 1
         ;;
     "noapk" )
-        if [ "$rootStatus" == "nonRoot" ]; then
+        if [ "$rootStatus" == "N" ]; then
             "${header[@]}" --msgbox "No apk found on apkmirror.com for version $selectedVer !!\nTry selecting other version." 12 45
             return 1
         else
@@ -527,17 +527,17 @@ downloadApp() {
 }
 
 downloadMicrog() {
-    microgName=mMicroG microgRepo=inotia00
+    microgName=microG microgRepo=fzproject
     if "${header[@]}" --begin 2 0 --title '| MicroG Prompt |' --no-items --defaultno --yesno "$microgName is used to run MicroG services without root.\nYouTube and YouTube Music won't work without it.\nIf you already have $microgName, You don't need to download it.\n\n\n\n\n\nDo you want to download $microgName app?" -1 -1; then
         internet || return 1
-        readarray -t microgheaders < <(curl -s "https://api.github.com/repos/$microgRepo/$microgName/releases/latest" | jq -r --arg regex ".*$arch.*" '(.assets[] | if .name | test($regex) then .browser_download_url, .size else empty end), .tag_name')
+        readarray -t microgheaders < <(curl -s "https://api.github.com/repos/inotia00/mMicroG/releases/latest" | jq -r --arg regex ".*$arch.*" '(.assets[] | if .name | test($regex) then .browser_download_url, .size else empty end), .tag_name')
         wget -q -c "${microgheaders[0]}" -O "$microgName-${microgheaders[2]}.apk" --show-progress --user-agent="$userAgent" 2>&1 | stdbuf -o0 cut -b 63-65 | stdbuf -o0 grep '[0-9]' | "${header[@]}" --begin 2 0 --gauge "App     : $microgName \nVersion : ${microgheaders[2]}\nSize    : $(numfmt --to=iec --format="%0.1f" "${microgheaders[1]}")\n\nDownloading..." -1 -1 && tput civis
         ls $microgName* &> /dev/null && mv $microgName* "$storagePath/" && termux-open "$storagePath/$microgName-${microgheaders[2]}.apk"
     fi
 }
 
 patchApp() {
-    if [ "$source" == "inotia00" ] && [ "$riplibsRVX" == "true" ]; then
+    if [ "$source" == "fzproject" ] && [ "$riplibsFZ" == "true" ]; then
         riplibArgs="--rip-lib=x86_64 --rip-lib=x86 --rip-lib=armeabi-v7a --rip-lib=arm64-v8a "
         riplibArgs="${riplibArgs//--rip-lib=$arch /}"
     fi
@@ -545,7 +545,7 @@ patchApp() {
     then
         keystore="$storagePath/custom.keystore"
     else
-        keystore="$repoDir"/revancify.keystore
+        keystore="$repoDir"/fz.keystore
     fi
     includedPatches=$(jq '.' "$storagePath/$source-patches.json" 2>/dev/null || jq -n '[]')
     patchesArg=$(jq -n -r --argjson includedPatches "$includedPatches" --arg pkgName "$pkgName" '$includedPatches[] | select(.pkgName == $pkgName).includedPatches | if ((. | length) != 0) then (.[] | "-i " + (. | ascii_downcase | sub(" "; "-"; "g"))) else empty end')
@@ -554,7 +554,7 @@ patchApp() {
     tput civis
     sleep 1
     if [ ! -f "apps/$appName-$appVer/base-$sourceName.apk" ]; then
-        "${header[@]}" --msgbox "Oops, Patching failed !!\nLogs saved to \"Internal Storage/Revancify/patch_log.txt\". Share the Patchlog to developer." 12 45
+        "${header[@]}" --msgbox "Oops, Patching failed !!\nLogs saved to \"Internal Storage/Patcher/patch_log.txt\". Share the Patchlog to developer." 12 45
         return 1
     fi
 }
@@ -564,13 +564,13 @@ checkMicrogPatch() {
     microgPatch=$(jq -r -n --arg pkgName "$pkgName" --argjson patchesJson "$patchesJson" 'first($patchesJson[] | if (.name | test(".*microg.*")) then if (.compatiblePackages | (map(.name) | index($pkgName)) != null) then .name else empty end else empty end)')
     [ "$microgPatch" == "" ] && return 0
     microgStatus=$(jq -n -r --argjson includedPatches "$includedPatches" --arg pkgName "$pkgName" --arg microgPatch "$microgPatch" '$includedPatches[] | select(.pkgName == $pkgName) | .includedPatches | index($microgPatch)')
-    if [ "$microgStatus" != "null" ] && [ "$rootStatus" == "root" ]; then
-        if ! "${header[@]}" --begin 2 0 --title '| MicroG warning |' --no-items --defaultno --yes-label "Continue" --no-label "Exclude" --yesno "You have a rooted device and you have included \"$microgPatch\" patch. This may result in $appName app crash.\n\n\nDo you want to exclude it or continue?" -1 -1; then
+    if [ "$microgStatus" != "null" ] && [ "$rootStatus" == "Y" ]; then
+        if ! "${header[@]}" --begin 2 0 --title '| microG warning |' --no-items --defaultno --yes-label "Continue" --no-label "Exclude" --yesno "You have a rooted device and you have included \"$microgPatch\" patch. This may result in $appName app crash.\n\n\nDo you want to exclude it or continue?" -1 -1; then
             jq -n -r --arg microgPatch "$microgPatch" --argjson includedPatches "$includedPatches" --arg pkgName "$pkgName" '[$includedPatches[] | (select(.pkgName == $pkgName) | .includedPatches) |= del(.[(. | index($microgPatch))])]' >"$storagePath/$source-patches.json"
             return 0
         fi
-    elif [ "$microgStatus" == "null" ] && [ "$rootStatus" == "nonRoot" ]; then
-        if ! "${header[@]}" --begin 2 0 --title '| MicroG warning |' --no-items --defaultno --yes-label "Continue" --no-label "Include" --yesno "You have a non-rooted device and you have not included \"$microgPatch\" patch. This may result in $appName app crash.\n\n\nDo you want to include it or continue?" -1 -1; then
+    elif [ "$microgStatus" == "null" ] && [ "$rootStatus" == "N" ]; then
+        if ! "${header[@]}" --begin 2 0 --title '| microG warning |' --no-items --defaultno --yes-label "Continue" --no-label "Include" --yesno "You have a non-rooted device and you have not included \"$microgPatch\" patch. This may result in $appName app crash.\n\n\nDo you want to include it or continue?" -1 -1; then
             jq -n -r --arg microgPatch "$microgPatch" --argjson includedPatches "$includedPatches" --arg pkgName "$pkgName" '[$includedPatches[] | (select(.pkgName == $pkgName) | .includedPatches) |= . + [$microgPatch]]' >"$storagePath/$source-patches.json"
             return 0
         fi
@@ -607,7 +607,7 @@ deleteComponents() {
 }
 
 preferences() {
-    prefsArray=("lightTheme" "$lightTheme" "Use Light theme for Revancify" "riplibsRVX" "$riplibsRVX" "[RVX] Removes extra libs from app" "forceUpdateCheckStatus" "$forceUpdateCheckStatus" "Check for resources update at startup" "patchMenuBeforePatching" "$patchMenuBeforePatching" "Shows Patches Menu before Patching starts" "launchAppAfterMount" "$launchAppAfterMount" "[Root] Launches app automatically after mount" allowVersionDowngrade "$allowVersionDowngrade" "[Root] Allows downgrading version if any such module is present" "fetchPreRelease" "$fetchPreRelease" "Fetches the pre-release version of resources")
+    prefsArray=("lightTheme" "$lightTheme" "Use Light theme for Patcher" "riplibsFZ" "$riplibsFZ" "[FZ] Removes extra libs from app" "forceUpdateCheckStatus" "$forceUpdateCheckStatus" "Check for resources update at startup" "patchMenuBeforePatching" "$patchMenuBeforePatching" "Shows Patches Menu before Patching starts" "launchAppAfterMount" "$launchAppAfterMount" "[Root] Launches app automatically after mount" allowVersionDowngrade "$allowVersionDowngrade" "[Root] Allows downgrading version if any such module is present" "fetchPreRelease" "$fetchPreRelease" "Fetches the pre-release version of resources")
     readarray -t prefsArray < <(for pref in "${prefsArray[@]}"; do sed 's/false/off/;s/true/on/' <<< "$pref"; done)
     read -ra newPrefs < <("${header[@]}" --begin 2 0 --title '| Preferences Menu |' --item-help --no-items --no-cancel --ok-label "Save" --checklist "Use arrow keys to navigate; Press Spacebar to toogle patch" $(($(tput lines) - 3)) -1 15 "${prefsArray[@]}" 2>&1 >/dev/tty)
     sed -i 's/true/false/' "$envFile"
@@ -661,9 +661,9 @@ mainMenu() {
         editPatchOptions
         ;;
     6 )
-        if [ "$rootStatus" == "root" ]; then
-            rootUninstall
-        elif [ "$rootStatus" == "nonRoot" ]; then
+        if [ "$rootStatus" == "Y" ]; then
+            YUninstall
+        elif [ "$rootStatus" == "N" ]; then
             downloadMicrog
         fi
         ;;
@@ -677,9 +677,9 @@ mainMenu() {
 }
 
 if su -c exit &> /dev/null; then
-    [ "$1" == "nonRoot" ] && rootStatus=nonRoot || rootStatus=root
+    [ "$1" == "N" ] && rootStatus=N || rootStatus=Y
 else
-    rootStatus=nonRoot
+    rootStatus=N
 fi
 
 initialize
