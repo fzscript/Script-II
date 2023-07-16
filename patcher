@@ -16,7 +16,7 @@ help() {
             fi
         done)
         IFS=","
-        echo -e "\e[1;31mpatcher ${invalidArgs[*]}: Perintah tidak ditemukan!\n\e[0m"
+        echo -e "\e[1;31mArgumen tidak valid Passed: ${invalidArgs[*]}\n\e[0m"
     fi
     echo -e "\e[1;34mPatcher by FZ Project's\n\e[0m
 \e[1;33mPenggunaan:\e[0m \e[1;32mpatcher [OPSI]\n\e[0m
@@ -143,7 +143,7 @@ checkproject() {
             exit 0
             ;;
         ?)
-            echo "Opsi tidak valid."
+            echo "Opsi tidak valid"
             exit 1
             ;;
         esac
