@@ -16,7 +16,7 @@ help() {
             fi
         done)
         IFS=","
-        echo -e "\e[1;31mArgumen tidak valid Passed: ${invalidArgs[*]}\n\e[0m"
+        echo -e "\e[1;31mInvalid Argument(s) Passed: ${invalidArgs[*]}\n\e[0m"
     fi
     echo -e "\e[1;34mPatcher by FZ Project's\n\e[0m
 \e[1;33mPenggunaan:\e[0m \e[1;32mpatcher [OPSI]\n\e[0m
