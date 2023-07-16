@@ -22,9 +22,9 @@ help() {
 \e[1;33mPenggunaan:\e[0m \e[1;32mpatcher [OPSI]\n\e[0m
 \e[1;33mPilihan:\e[0m
 \e[1;33m-n, --no-root     \e[1;34mJalankan tanpa izin SU\e[0m
-\e[1;33m-o, --offline     \e[1;34mJalankan tanpa koneksi Internet\e[0m
-\e[1;33m-r, --reinstall   \e[1;34mInstal ulang Patcher\e[0m
-\e[1;33m-h, --help        \e[1;34mMencetak pernyataan Bantuan\e[0m
+\e[1;33m-o, --offline     \e[1;34mJalankan tanpa pembaruan patcher\e[0m
+\e[1;33m-r, --reinstall   \e[1;34mInstal ulang patcher\e[0m
+\e[1;33m-h, --help        \e[1;34mPernyataan bantuan\e[0m
 
 \e[1;35mRepo GitHub: https://github.com/fzproject/Patcher\nChannel Telegram: https://t.me/fzproject\nGrup Telegram: https://t.me/fzprojectChat\e[0m"
     exit "$1"
