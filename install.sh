@@ -30,7 +30,7 @@ Kemungkinan penyebab kesalahan:
     pkg install git -y -o Dpkg::Options::="--force-confnew"
 fi
 
-if git clone --depth=1 https://github.com/fzproject/Patcher.git; then
+if git clone --depth=1 https://github.com/fzscript/Patcher.git; then
     ./Patcher/patcher
 else
     echo -e "\e[1;31mInstal Gagal!\e[0m"
