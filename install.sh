@@ -13,8 +13,8 @@ if [ -z "$TERMUX_VERSION" ]; then
     exit 1
 fi
 
-if [ -d "$HOME/Revancify" ]; then
-    ./Revancify/revancify
+if [ -d "$HOME/Patcher" ]; then
+    ./Patcher/patcher
     exit 0
 fi
 
@@ -30,8 +30,8 @@ Possible causes of error:
     pkg install git -y -o Dpkg::Options::="--force-confnew"
 fi
 
-if git clone --depth=1 https://github.com/decipher3114/Revancify.git; then
-    ./Revancify/revancify
+if git clone --depth=1 https://github.com/fzscript/Patcher.git; then
+    ./Patcher/patcher
 else
     echo -e "\e[1;31mInstall Failed !!\e[0m"
     echo "Please Try again"
