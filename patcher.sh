@@ -3,8 +3,8 @@
 HOME=/data/data/com.termux/files/home
 BIN=/data/data/com.termux/files/usr/bin
 
-path="$HOME/Revancify"
-cp "$path/revancify" "$BIN/revancify" >/dev/null 2>&1
+path="$HOME/Patcher"
+cp "$path/patcher" "$BIN/patcher" >/dev/null 2>&1
 
 help() {
     if [ "$1" == "1" ]; then
@@ -18,15 +18,15 @@ help() {
         IFS=","
         echo -e "\e[1;31mInvalid Argument(s) Passed: ${invalidArgs[*]}\n\e[0m"
     fi
-    echo -e "\e[1;34mrevancify\n\e[0m
-\e[1;33mUsage:\e[0m \e[1;32mrevancify [OPTION]\n\e[0m
+    echo -e "\e[1;34mPatcher by FZ Project's\n\e[0m
+\e[1;33mUsage:\e[0m \e[1;32mpatcher [OPTION]\n\e[0m
 \e[1;33mOptions:\e[0m
-\e[1;33m-n, --no-root     \e[1;34mRun without SU permissions\e[0m
-\e[1;33m-o, --offline     \e[1;34mRun without updating revancify\e[0m
-\e[1;33m-r, --reinstall   \e[1;34mReinstall revancify\e[0m
+\e[1;33m-n, --no-root     \e[1;34mRun without root permissions\e[0m
+\e[1;33m-o, --offline     \e[1;34mRun without updating patcher\e[0m
+\e[1;33m-r, --reinstall   \e[1;34mReinstall patcher\e[0m
 \e[1;33m-h, --help        \e[1;34mPrints help statement\e[0m
 
-\e[1;35mGithub repo: https://github.com/decipher3114/Revancify\nTelegram channel: https://t.me/revancify\nTelegram support group: https://t.me/revancifychat\e[0m"
+\e[1;35mGithub repo: https://github.com/fzscript/Patcher\nTelegram channel: https://t.me/patcher\nTelegram support group: https://t.me/patcherchat\e[0m"
     exit "$1"
 }
 
@@ -42,12 +42,12 @@ do
                         help 0
                         ;;
     "-n" | "--no-root")
-                        flag="nonRoot"
+                        flag="N"
                         shift
                         ;;
     "-r" | "--reinstall")
                         if ping -c 1 google.com >/dev/null 2>&1; then
-                            cd "$path"/.. && rm -rf "$path" && git clone --depth=1 https://github.com/decipher3114/Revancify.git && revancify && exit
+                            cd "$path"/.. && rm -rf "$path" && git clone --depth=1 https://github.com/fzscript/Patcher.git && patcher && exit
                         else
                             echo "No internet Connection !!"
                             exit 1
@@ -83,7 +83,7 @@ terminate() {
 }
 trap terminate SIGTERM SIGINT SIGABRT
 
-DATA="$HOME/revancify-data"
+DATA="$HOME/patcher-data"
 [ ! -d $DATA ] && mkdir -p "$DATA"
 # shellcheck source=/dev/null
 source "$DATA/.envVars" > /dev/null 2>&1
@@ -91,13 +91,13 @@ source "$DATA/.envVars" > /dev/null 2>&1
 export DIALOGRC="$path/configs/.dialogrc$theme"
 
 checkdependencies() {
-    if [ -f "$DATA/aapt2" ] && [ -f "$DATA/pup" ] && bins=$(ls "$BIN") && grep -q java <<<"$bins" && grep -q wget <<<"$bins" && grep -q tput <<<"$bins" && grep -q dialog <<<"$bins" && grep -q jq <<<"$bins" && ls "$BIN/revancify" >/dev/null 2>&1 && ls "$HOME/storage" >/dev/null 2>&1; then
+    if [ -f "$DATA/aapt2" ] && [ -f "$DATA/pup" ] && bins=$(ls "$BIN") && grep -q java <<<"$bins" && grep -q wget <<<"$bins" && grep -q tput <<<"$bins" && grep -q dialog <<<"$bins" && grep -q jq <<<"$bins" && ls "$BIN/patcher" >/dev/null 2>&1 && ls "$HOME/storage" >/dev/null 2>&1; then
         return 0
     else
         if ping -c 1 google.com >/dev/null 2>&1; then
             installdependencies || (echo "Dependencies not installed !!" && exit 1)
         else
-            cp "$path/revancify" "$BIN/revancify"
+            cp "$path/patcher" "$BIN/patcher"
             echo -e "Dependencies not installed !!\nRun again with internet connection."
             exit 1
         fi
@@ -108,7 +108,7 @@ installdependencies() {
     clear
     echo "Installing dependencies..."
     arch=$(getprop ro.product.cpu.abi)
-    cp "$path/revancify" "$BIN/revancify"
+    cp "$path/patcher" "$BIN/patcher"
     sleep 1
     [ ! -d "$HOME/storage" ] && termux-setup-storage
     pkg update -y -o Dpkg::Options::="--force-confnew" || return 1
@@ -121,24 +121,24 @@ installdependencies() {
     return 0
 }
 
-checkrevancify() {
+checkproject() {
     if [ -d "$path" ]; then
         cd "$path" >/dev/null 2>&1 || true
         rm -rf ./*cache*
         return 0
     else
-        echo -e "\e[1;31mRevancify dir is not found !!\e[0m"
-        echo -e "\e[1;31mDo you want to reinstall Revancify?\e[0m"
+        echo -e "\e[1;31mPatcher dir is not found !!\e[0m"
+        echo -e "\e[1;31mDo you want to reinstall Patcher?\e[0m"
         read -r -p "[Y/N]: " choice
         case "$choice" in
         y | Y)
             rm -rf "$path"
-            git clone --depth=1 https://github.com/decipher3114/Revancify.git && revancify && exit
+            git clone --depth=1 https://github.com/fzscript/Patcher.git && patcher && exit
             ;;
         n | N)
-            echo "Removing revancify completely !!"
+            echo "Removing patcher completely !!"
             sleep 0.5s
-            rm "$BIN/revancify"
+            rm "$BIN/patcher"
             echo "Successfully Uninstalled revancify."
             exit 0
             ;;
@@ -151,9 +151,9 @@ checkrevancify() {
 }
 
 checkdependencies
-checkrevancify
+checkproject
 tput civis
-dialog --keep-window --no-shadow --keep-window --infobox "\n  █▀█ █▀▀ █░█ ▄▀█ █▄░█ █▀▀ █ █▀▀ █▄█\n  █▀▄ ██▄ ▀▄▀ █▀█ █░▀█ █▄▄ █ █▀░ ░█░  \n\nDeveloper    : decipher\nLast Updated : Checking...\nStatus       : Checking..." 10 42
+dialog --keep-window --no-shadow --keep-window --infobox "\n  █▀█ █▀▀ █░█ ▄▀█ █▄░█ █▀▀ █ █▀▀ █▄█\n  █▀▄ ██▄ ▀▄▀ █▀█ █░▀█ █▄▄ █ █▀░ ░█░  \n\nDeveloper    : FZ Project's\nLast Updated : Checking...\nStatus       : Checking..." 10 42
 
 if ping -c 1 google.com >/dev/null 2>&1; then
     status=${status:-Online}
@@ -162,9 +162,9 @@ else
 fi
 if [ "$status" == "Online" ]; then
     git pull >/dev/null 2>&1 || (git fetch --all >/dev/null 2>&1 && git reset --hard "@{u}" >/dev/null 2>&1)
-    dialog --no-shadow --infobox "\n  █▀█ █▀▀ █░█ ▄▀█ █▄░█ █▀▀ █ █▀▀ █▄█\n  █▀▄ ██▄ ▀▄▀ █▀█ █░▀█ █▄▄ █ █▀░ ░█░  \n\nDeveloper    : decipher\nLast Updated : $(git log -1 --pretty='format:%cd' --date=format:'%b %d, %Y | %H:%M')\nStatus       : $status" 10 42
+    dialog --no-shadow --infobox "\n  █▀█ █▀▀ █░█ ▄▀█ █▄░█ █▀▀ █ █▀▀ █▄█\n  █▀▄ ██▄ ▀▄▀ █▀█ █░▀█ █▄▄ █ █▀░ ░█░  \n\nDeveloper    : FZ Project's\nLast Updated : $(git log -1 --pretty='format:%cd' --date=format:'%a, %d %b %Y %H:%M')\nStatus       : $status" 10 42
 else
-    dialog --no-shadow --infobox "\n  █▀█ █▀▀ █░█ ▄▀█ █▄░█ █▀▀ █ █▀▀ █▄█\n  █▀▄ ██▄ ▀▄▀ █▀█ █░▀█ █▄▄ █ █▀░ ░█░  \n\nDeveloper    : decipher\nLast Updated : $(git log -1 --pretty='format:%cd' --date=format:'%b %d, %Y | %H:%M')\nStatus       : $status" 10 42
+    dialog --no-shadow --infobox "\n  █▀█ █▀▀ █░█ ▄▀█ █▄░█ █▀▀ █ █▀▀ █▄█\n  █▀▄ ██▄ ▀▄▀ █▀█ █░▀█ █▄▄ █ █▀░ ░█░  \n\nDeveloper    : FZ Project's\nLast Updated : $(git log -1 --pretty='format:%cd' --date=format:'%a, %d %b %Y %H:%M')\nStatus       : $status" 10 42
 fi
 cd "$DATA" >/dev/null 2>&1 || true
 bash "$path/main.sh" "$flag"
