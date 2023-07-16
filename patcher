@@ -162,9 +162,9 @@ else
 fi
 if [ "$status" == "Online" ]; then
     git pull >/dev/null 2>&1 || (git fetch --all >/dev/null 2>&1 && git reset --hard "@{u}" >/dev/null 2>&1)
-    dialog --no-shadow --infobox "\n  █▀█ █▀▀ █░█ ▄▀█ █▄░█ █▀▀ █ █▀▀ █▄█\n  █▀▄ ██▄ ▀▄▀ █▀█ █░▀█ █▄▄ █ █▀░ ░█░  \n\nDeveloper    : FZ Project's\nLast Updated : $(git log -1 --pretty='format:%cd' --date=format:'%a, %d %b %Y %H:%M')\nStatus       : $status" 10 42
+    dialog --no-shadow --infobox "\n  █▀█ █▀▀ █░█ ▄▀█ █▄░█ █▀▀ █ █▀▀ █▄█\n  █▀▄ ██▄ ▀▄▀ █▀█ █░▀█ █▄▄ █ █▀░ ░█░  \n\nDeveloper    : FZ Project's\nTerakhir diperbarui : $(git log -1 --pretty='format:%cd' --date=format:'%Y-%m-%d %H:%M:%S')\nStatus       : $status" 10 42
 else
-    dialog --no-shadow --infobox "\n  █▀█ █▀▀ █░█ ▄▀█ █▄░█ █▀▀ █ █▀▀ █▄█\n  █▀▄ ██▄ ▀▄▀ █▀█ █░▀█ █▄▄ █ █▀░ ░█░  \n\nDeveloper    : FZ Project's\nLast Updated : $(git log -1 --pretty='format:%cd' --date=format:'%a, %d %b %Y %H:%M')\nStatus       : $status" 10 42
+    dialog --no-shadow --infobox "\n  █▀█ █▀▀ █░█ ▄▀█ █▄░█ █▀▀ █ █▀▀ █▄█\n  █▀▄ ██▄ ▀▄▀ █▀█ █░▀█ █▄▄ █ █▀░ ░█░  \n\nDeveloper    : FZ Project's\nTerakhir Diperbarui : $(git log -1 --pretty='format:%cd' --date=format:'%Y-%m-%d %H:%M:%S')\nStatus       : $status" 10 42
 fi
 cd "$DATA" >/dev/null 2>&1 || true
 bash "$path/main.sh" "$flag"
