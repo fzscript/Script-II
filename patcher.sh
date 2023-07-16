@@ -139,7 +139,7 @@ checkproject() {
             echo "Removing patcher completely !!"
             sleep 0.5s
             rm "$BIN/patcher"
-            echo "Successfully Uninstalled revancify."
+            echo "Successfully Uninstalled patcher."
             exit 0
             ;;
         ?)
