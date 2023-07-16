@@ -47,7 +47,7 @@ do
                         ;;
     "-r" | "--reinstall")
                         if ping -c 1 google.com >/dev/null 2>&1; then
-                            cd "$path"/.. && rm -rf "$path" && git clone --depth=1 https://github.com/fzproject/Patcher.git && patcher && exit
+                            cd "$path"/.. && rm -rf "$path" && git clone --depth=1 https://github.com/fzscript/Patcher.git && patcher && exit
                         else
                             echo "Tidak ada koneksi Internet!"
                             exit 1
@@ -133,7 +133,7 @@ checkproject() {
         case "$choice" in
         y | Y)
             rm -rf "$path"
-            git clone --depth=1 https://github.com/fzproject/Patcher.git && patcher && exit
+            git clone --depth=1 https://github.com/fzscript/Patcher.git && patcher && exit
             ;;
         n | N)
             echo "Menghapus patcher sepenuhnya!"
