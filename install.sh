@@ -24,16 +24,16 @@ if ! command -v git &> /dev/null; then
 Kemungkinan penyebab kesalahan:
 1. Termux dari Play Store tidak terawat, Unduh Termux dari GitHub.
 2. Koneksi Internet tidak stabil.
-3. Repo bermasalah, Hapus Data Termux dan Coba lagi."
+3. Repositori bermasalah, Hapus Data Termux dan Coba lagi."
         exit 1
     fi
     pkg install git -y -o Dpkg::Options::="--force-confnew"
 fi
 
-if git clone --depth=1 https://github.com/fzscript/Patcher.git; then
+if git clone --depth=1 https://github.com/fzproject/Patcher.git; then
     ./Patcher/patcher
 else
     echo -e "\e[1;31mInstal Gagal!\e[0m"
-    echo "Harap Coba lagi."
+    echo "Harap Coba lagi"
     exit 1
 fi
