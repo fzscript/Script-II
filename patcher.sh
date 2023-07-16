@@ -9,24 +9,24 @@ cp "$path/patcher" "$BIN/patcher" >/dev/null 2>&1
 help() {
     if [ "$1" == "1" ]; then
         readarray -t invalidArgs < <(for i in "${FLAG_ERR[@]}"; do
-            if grep -q "unrecognized" <<< "$i"; then
+            if grep -q "tidak dikenali" <<< "$i"; then
                 grep -oP "(?<=\`).*(?=')" <<< "$i"
             else
                 cut -b 27 <<< "$i" | xargs -0 -I {} echo -n "-{}"
             fi
         done)
         IFS=","
-        echo -e "\e[1;31mInvalid Argument(s) Passed: ${invalidArgs[*]}\n\e[0m"
+        echo -e "\e[1;31mpatcher ${invalidArgs[*]}: Perintah tidak ditemukan!\n\e[0m"
     fi
     echo -e "\e[1;34mPatcher by FZ Project's\n\e[0m
-\e[1;33mUsage:\e[0m \e[1;32mpatcher [OPTION]\n\e[0m
-\e[1;33mOptions:\e[0m
-\e[1;33m-n, --no-root     \e[1;34mRun without root permissions\e[0m
-\e[1;33m-o, --offline     \e[1;34mRun without updating patcher\e[0m
-\e[1;33m-r, --reinstall   \e[1;34mReinstall patcher\e[0m
-\e[1;33m-h, --help        \e[1;34mPrints help statement\e[0m
+\e[1;33mPenggunaan:\e[0m \e[1;32mpatcher [OPSI]\n\e[0m
+\e[1;33mPilihan:\e[0m
+\e[1;33m-n, --no-root     \e[1;34mJalankan tanpa izin ROOT\e[0m
+\e[1;33m-o, --offline     \e[1;34mJalankan tanpa koneksi Internet\e[0m
+\e[1;33m-r, --reinstall   \e[1;34mInstal ulang Patcher\e[0m
+\e[1;33m-h, --help        \e[1;34mMencetak pernyataan Bantuan\e[0m
 
-\e[1;35mGithub repo: https://github.com/fzscript/Patcher\nTelegram channel: https://t.me/patcher\nTelegram support group: https://t.me/patcherchat\e[0m"
+\e[1;35mRepo GitHub: https://github.com/fzproject/Patcher\nChannel Telegram: https://t.me/fzproject\nGrup Telegram: https://t.me/fzprojectChat\e[0m"
     exit "$1"
 }
 
@@ -49,12 +49,12 @@ do
                         if ping -c 1 google.com >/dev/null 2>&1; then
                             cd "$path"/.. && rm -rf "$path" && git clone --depth=1 https://github.com/fzscript/Patcher.git && patcher && exit
                         else
-                            echo "No internet Connection !!"
+                            echo "Tidak ada koneksi Internet!"
                             exit 1
                         fi
                         ;;
     "-o" | "--offline")
-                        status="Offline [forced]"
+                        status="Offline [dipaksa]"
                         shift
                         ;;
     "--")
@@ -66,18 +66,18 @@ do
 done
 
 if [ "$(getprop ro.product.cpu.abi)" = "armeabi-v7a" ]; then
-    echo "CPU architecture \"armeabi-v7a\" of your device is not supported for patching."
-    echo "You may get build errors."
-    read -N 1 -s -r -p $'Press ENTER to CONTINUE or SPACE to EXIT...\n' key
+    echo "Arsitektur CPU \"armeabi-v7a\" perangkat Anda tidak didukung untuk mem-patch."
+    echo "Anda mungkin mendapatkan kesalahan build."
+    read -N 1 -s -r -p $'Tekan ENTER untuk LANJUTKAN atau <SPASI> untuk KELUAR...\n' key
     if [ "$key" = " " ]; then
-        echo "Script terminated"
+        echo "Keluar!"
         exit
     fi
 fi
 
 terminate() {
     clear
-    echo "Script terminated !!"
+    echo "Ditutup paksa."
     tput cnorm
     exit 1
 }
@@ -95,10 +95,10 @@ checkdependencies() {
         return 0
     else
         if ping -c 1 google.com >/dev/null 2>&1; then
-            installdependencies || (echo "Dependencies not installed !!" && exit 1)
+            installdependencies || (echo "Dependensi tidak diinstal!" && exit 1)
         else
             cp "$path/patcher" "$BIN/patcher"
-            echo -e "Dependencies not installed !!\nRun again with internet connection."
+            echo -e "Dependensi tidak diinstal!\nJalankan kembali dengan koneksi Internet."
             exit 1
         fi
     fi
@@ -106,7 +106,7 @@ checkdependencies() {
 
 installdependencies() {
     clear
-    echo "Installing dependencies..."
+    echo "Menginstal dependensi..."
     arch=$(getprop ro.product.cpu.abi)
     cp "$path/patcher" "$BIN/patcher"
     sleep 1
@@ -117,7 +117,7 @@ installdependencies() {
     sed -i '/allow-external-apps/s/# //' "$HOME/.termux/termux.properties"
     [ ! -f "$DATA/aapt2" ] && wget "https://github.com/decipher3114/termux-aapt/releases/download/v0.1/aapt2_$arch" -O "$DATA/aapt2" && chmod +x "$DATA/aapt2"
     [ ! -f "$DATA/pup" ] && wget "https://github.com/decipher3114/pup/releases/download/v0.1/pup_$arch" -O "$DATA/pup" && chmod +x "$DATA/pup"
-    echo "Dependencies installed successfully."
+    echo "Dependensi berhasil diinstal."
     return 0
 }
 
@@ -127,8 +127,8 @@ checkproject() {
         rm -rf ./*cache*
         return 0
     else
-        echo -e "\e[1;31mPatcher dir is not found !!\e[0m"
-        echo -e "\e[1;31mDo you want to reinstall Patcher?\e[0m"
+        echo -e "\e[1;31mPatcher tidak ditemukan!\e[0m"
+        echo -e "\e[1;31mApakah Anda ingin menginstal ulang Patcher?\e[0m"
         read -r -p "[Y/N]: " choice
         case "$choice" in
         y | Y)
@@ -136,14 +136,14 @@ checkproject() {
             git clone --depth=1 https://github.com/fzscript/Patcher.git && patcher && exit
             ;;
         n | N)
-            echo "Removing patcher completely !!"
+            echo "Menghapus patcher sepenuhnya!"
             sleep 0.5s
             rm "$BIN/patcher"
-            echo "Successfully Uninstalled patcher."
+            echo "Patcher berhasil dihapus."
             exit 0
             ;;
         ?)
-            echo "Invalid option !!"
+            echo "Opsi tidak valid."
             exit 1
             ;;
         esac
@@ -153,7 +153,7 @@ checkproject() {
 checkdependencies
 checkproject
 tput civis
-dialog --keep-window --no-shadow --keep-window --infobox "\n  █▀█ █▀▀ █░█ ▄▀█ █▄░█ █▀▀ █ █▀▀ █▄█\n  █▀▄ ██▄ ▀▄▀ █▀█ █░▀█ █▄▄ █ █▀░ ░█░  \n\nDeveloper    : FZ Project's\nLast Updated : Checking...\nStatus       : Checking..." 10 42
+dialog --keep-window --no-shadow --keep-window --infobox "\n  █▀█ █▀▀ █░█ ▄▀█ █▄░█ █▀▀ █ █▀▀ █▄█\n  █▀▄ ██▄ ▀▄▀ █▀█ █░▀█ █▄▄ █ █▀░ ░█░  \n\nDeveloper    : FZ Project's\nLast Updated : Checking...\nStatus       : Checking..." 20 23
 
 if ping -c 1 google.com >/dev/null 2>&1; then
     status=${status:-Online}
@@ -162,9 +162,9 @@ else
 fi
 if [ "$status" == "Online" ]; then
     git pull >/dev/null 2>&1 || (git fetch --all >/dev/null 2>&1 && git reset --hard "@{u}" >/dev/null 2>&1)
-    dialog --no-shadow --infobox "\n  █▀█ █▀▀ █░█ ▄▀█ █▄░█ █▀▀ █ █▀▀ █▄█\n  █▀▄ ██▄ ▀▄▀ █▀█ █░▀█ █▄▄ █ █▀░ ░█░  \n\nDeveloper    : FZ Project's\nLast Updated : $(git log -1 --pretty='format:%cd' --date=format:'%a, %d %b %Y %H:%M')\nStatus       : $status" 10 42
+    dialog --no-shadow --infobox "\n  █▀█ █▀▀ █░█ ▄▀█ █▄░█ █▀▀ █ █▀▀ █▄█\n  █▀▄ ██▄ ▀▄▀ █▀█ █░▀█ █▄▄ █ █▀░ ░█░  \n\nDeveloper    : FZ Project's\nLast Updated : $(git log -1 --pretty='format:%cd' --date=format:'%a, %d %b %Y %H:%M')\nStatus       : $status" 20 23
 else
-    dialog --no-shadow --infobox "\n  █▀█ █▀▀ █░█ ▄▀█ █▄░█ █▀▀ █ █▀▀ █▄█\n  █▀▄ ██▄ ▀▄▀ █▀█ █░▀█ █▄▄ █ █▀░ ░█░  \n\nDeveloper    : FZ Project's\nLast Updated : $(git log -1 --pretty='format:%cd' --date=format:'%a, %d %b %Y %H:%M')\nStatus       : $status" 10 42
+    dialog --no-shadow --infobox "\n  █▀█ █▀▀ █░█ ▄▀█ █▄░█ █▀▀ █ █▀▀ █▄█\n  █▀▄ ██▄ ▀▄▀ █▀█ █░▀█ █▄▄ █ █▀░ ░█░  \n\nDeveloper    : FZ Project's\nLast Updated : $(git log -1 --pretty='format:%cd' --date=format:'%a, %d %b %Y %H:%M')\nStatus       : $status" 20 23
 fi
 cd "$DATA" >/dev/null 2>&1 || true
 bash "$path/main.sh" "$flag"
@@ -172,9 +172,9 @@ exitstatus=$?
 clear
 cd "$HOME" || :
 if [ $exitstatus -eq 0 ]; then
-    echo "Script exited !!"
+    echo "Keluar!"
 else
-    echo "Script terminated !!"
+    echo "Ditutup paksa."
     rm -rf -- *cache >/dev/null 2>&1
 fi
 tput cnorm
