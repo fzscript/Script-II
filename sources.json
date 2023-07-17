@@ -6,6 +6,50 @@
         {
             "cli":
             {
+                "org": "fzproject",
+                "repo": "fz-cli"
+            },
+            "patches":
+            {
+                "org": "fzproject",
+                "repo": "fz-patches"
+            },
+            "integrations":
+            {
+                "org": "fzproject",
+                "repo": "fz-integrations"
+            }
+        }
+    },
+    "revanced": 
+    {
+        "projectName": "Revanced",
+        "sources": 
+        {
+            "cli":
+            {
+                "org": "revanced",
+                "repo": "revanced-cli"
+            },
+            "patches":
+            {
+                "org": "revanced",
+                "repo": "revanced-patches"
+            },
+            "integrations":
+            {
+                "org": "revanced",
+                "repo": "revanced-integrations"
+            }
+        }
+    },
+    "inotia00": 
+    {
+        "projectName": "Revanced-Extended",
+        "sources": 
+        {
+            "cli":
+            {
                 "org": "inotia00",
                 "repo": "revanced-cli"
             },
