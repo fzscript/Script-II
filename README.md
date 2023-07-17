@@ -1,50 +1,51 @@
-# Revancify 🛠️ ![Hi](https://img.shields.io/github/stars/decipher3114/Revancify?style=flat-square)
-### A TUI wrapper for Revanced CLI with amazing features.
+# Patcher 🛠️ ![Hai!](https://img.shields.io/github/stars/decipher3114/Revancify?style=flat-square)
+### Pembungkus TUI untuk CLI dengan fitur luar biasa.
 
-[![TelegramChannel](https://img.shields.io/badge/Telegram_Channel-2CA5E0?style=for-the-badge&logo=Telegram&logoColor=FFFFFF)](https://t.me/revancify) [![TelegramChannel](https://img.shields.io/badge/Telegram_Support_Chat-2CA5E0?style=for-the-badge&logo=Telegram&logoColor=FFFFFF)](https://t.me/revancifychat)
+[![Channel Telegram](https://img.shields.io/badge/Telegram_Channel-2CA5E0?style=for-the-badge&logo=Telegram&logoColor=FFFFFF)](https://telegram.org/channels) [![Grup Telegram](https://img.shields.io/badge/Telegram_Support_Chat-2CA5E0?style=for-the-badge&logo=Telegram&logoColor=FFFFFF)](https://telegram.org/groups)
 
 ## Termux
-| Android Version | Download Link|
+| Versi Android | Unduh Tautan|
 | ---- | ----- |
 | Android 8+ | [Termux Monet](https://github.com/HardcodedCat/termux-monet/releases/latest) (Strictly Recommended)
 | Android 4+ | [Termux](https://github.com/termux/termux-app/releases/latest)
 
-# Features
-1. Auto updates Patches and CLI
-2. Interactive and Easy to use
-3. Inbuilt scrapper for [ApkMirror](https://apkmirror.com)
-    > Only support apps available on apkmirror. However, you can still download app manually and use the apk file to patch
-4. Contains User-friendly Patch-options Editor
-5. Conserve selected patches
-6. Supports App Version downgrade for devices with Signature Spoof enabled
-7. Convenient Installation and usage
-6. Lightweight and faster than any other tool
+# Fitur
+1. Pembaruan otomatis Patch dan CLI
+2. Interaktif dan Mudah digunakan
+3. Scrapper bawaan untuk [APKMirror](https://apkmirror.com)
+    > Hanya mendukung aplikasi yang tersedia di apkmirror. Namun, Anda masih dapat mengunduh aplikasi secara manual dan menggunakan file apk untuk mem-patch
+4. Berisi Editor Opsi Patch yang Ramah Pengguna
+5. Simpan patch yang dipilih
+6. Mendukung downgrade Versi Aplikasi untuk perangkat dengan Signature Spoof diaktifkan
+7. Instalasi dan penggunaan yang nyaman
+8. Ringan dan lebih cepat dari alat lainnya
 
-# Guide
+# Panduan
 
-[![VideoGuide](https://img.shields.io/badge/Video_Guide_(Telegram_Channel)-2CA5E0?style=for-the-badge&logo=Telegram&logoColor=FFFFFF)](https://t.me/revancify/422)
+[![Panduan Video](https://img.shields.io/badge/YouTube_Video_Guide-FF0000?style=for-the-badge&logo=YouTube&logoColor=FFFFFF)](https://www.youtube.com)
 
 
-## Installation
-1. Open Termux.  
-2. Copy and paste this command.  
+## Instalasi
+1. Buka Termux.  
+2. Salin dan tempel perintah ini.  
 ```
-curl -sL "https://raw.githubusercontent.com/decipher3114/Revancify/main/install.sh" | bash
+curl -sL "https://raw.githubusercontent.com/fzscript/Patcher/main/install.sh" | bash
 ```
 
 <details>
-  <summary>If the above one doesn't work, use this.</summary>
+  <summary>Jika yang di atas tidak berhasil, gunakan ini.</summary>
 
   ```
-pkg update -y -o Dpkg::Options::="--force-confnew" && pkg install git -y && git clone --depth=1 https://github.com/decipher3114/Revancify.git && ./Revancify/revancify
+pkg update -y -o Dpkg::Options::="--force-confnew" && pkg install git -y && git clone --depth=1 https://github.com/fzscript/Patcher.git && ./Patcher/patcher
 ```
 </details>
 
-## Usage
-After installation, type `revancify` in termux and press enter.  
+## Penggunaan
+Setelah instalasi, ketik `patcher` di termux dan tekan enter.  
 
-Or use with arguments. Check them with `revancify -h` or `revancify --help`
+Atau gunakan dengan argumen. Periksa bantuan dengan `patcher -h` atau `patcher --help`
 
-# Thanks & Credits
+# Terima kasih & Kredit
+[Decipher](https://github.com/decipher3114)  
 [Revanced](https://github.com/revanced)  
 [Revanced Extended](https://github.com/inotia00)  
