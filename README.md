@@ -1,8 +1,6 @@
 # Patcher 🛠️ ![Hai!](https://img.shields.io/github/stars/fzscript/Patcher?style=flat-square)
 ### Pembungkus TUI untuk CLI dengan fitur luar biasa.
 
-[![Channel Telegram](https://img.shields.io/badge/Channel_Telegram-2CA5E0?style=for-the-badge&logo=Telegram&logoColor=FFFFFF)](https://telegram.org/channels) [![Grup Telegram](https://img.shields.io/badge/Grup_Telegram-2CA5E0?style=for-the-badge&logo=Telegram&logoColor=FFFFFF)](https://telegram.org/groups)
-
 ## Termux
 | Versi Android | Unduh Tautan|
 | ---- | ----- |
