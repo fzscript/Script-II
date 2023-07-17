@@ -43,7 +43,7 @@ pkg update -y -o Dpkg::Options::="--force-confnew" && pkg install git -y && git 
 ## Penggunaan
 Setelah instalasi, ketik `patcher` di termux dan tekan enter.  
 
-Atau gunakan dengan argumen. Periksa bantuan dengan `patcher -h` atau `patcher --help`
+Atau gunakan dengan argumen. Periksa dengan `patcher -h` atau `patcher --help`
 
 # Terima kasih & Kredit
 [Decipher](https://github.com/decipher3114)  
