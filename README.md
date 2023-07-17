@@ -1,7 +1,7 @@
 # Patcher 🛠️ ![Hai!](https://img.shields.io/github/stars/fzscript/Patcher?style=flat-square)
 ### Pembungkus TUI untuk CLI dengan fitur luar biasa.
 
-[![Channel Telegram](https://img.shields.io/badge/Telegram_Channel-2CA5E0?style=for-the-badge&logo=Telegram&logoColor=FFFFFF)](https://telegram.org/channels) [![Grup Telegram](https://img.shields.io/badge/Telegram_Support_Chat-2CA5E0?style=for-the-badge&logo=Telegram&logoColor=FFFFFF)](https://telegram.org/groups)
+[![Channel Telegram](https://img.shields.io/badge/Channel_Telegram-2CA5E0?style=for-the-badge&logo=Telegram&logoColor=FFFFFF)](https://telegram.org/channels) [![Grup Telegram](https://img.shields.io/badge/Grup_Telegram-2CA5E0?style=for-the-badge&logo=Telegram&logoColor=FFFFFF)](https://telegram.org/groups)
 
 ## Termux
 | Versi Android | Unduh Tautan|
@@ -22,7 +22,7 @@
 
 # Panduan
 
-[![Panduan Video](https://img.shields.io/badge/YouTube-Tidak_Ditemukan-FF0000?style=for-the-badge&logo=YouTube&logoColor=FFFFFF)![Video Tidak Ditemukan!](https://img.shields.io/youtube/likes/I8-VM6rJL1c?style=for-the-badge&logo=YouTube&logoColor=ffffff&labelColor=ff0000&color=555555)](https://www.youtube.com)
+[![Panduan Video](https://img.shields.io/badge/YouTube-FF0000-Tidak_Ditemukan-282828?style=for-the-badge&logo=YouTube&logoColor=FFFFFF)![Video Tidak Ditemukan!](https://img.shields.io/youtube/likes/I8-VM6rJL1c?style=for-the-badge&logo=YouTube&logoColor=ffffff&labelColor=ff0000&color=555555)](https://www.youtube.com)
 
 
 ## Instalasi
