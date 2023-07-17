@@ -15,7 +15,7 @@
 3. Scrapper bawaan untuk [APKMirror](https://apkmirror.com)
     > Hanya mendukung aplikasi yang tersedia di apkmirror. Namun, Anda masih dapat mengunduh aplikasi secara manual dan menggunakan file apk untuk mem-patch
 4. Berisi Editor Opsi Patch yang Ramah Pengguna
-5. Simpan patch yang dipilih
+5. Simpan Patch yang dipilih
 6. Mendukung downgrade Versi Aplikasi untuk perangkat dengan Signature Spoof diaktifkan
 7. Instalasi dan penggunaan yang nyaman
 8. Ringan dan lebih cepat dari alat lainnya
