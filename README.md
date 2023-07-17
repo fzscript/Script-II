@@ -1,4 +1,4 @@
-# Skrip &#8545; 🛠️ ![Hai!](https://img.shields.io/github/stars/fzscript/Patcher?style=social)
+# Skrip &#8545; 🛠️ ![Hai!](https://img.shields.io/github/stars/fzscript/Patcher?style=flat)
 ### Pembungkus TUI untuk FZ CLI dengan fitur luar biasa.
 
 ## Termux
