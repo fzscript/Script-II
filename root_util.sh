@@ -12,8 +12,8 @@ if [ "$1" = "unmount" ]; then
     grep "$pkgName" /proc/mounts | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l
     stockApp=$(pm path "$pkgName" | sed -n "/base/s/package://p")
     am force-stop "$pkgName"
-    rm "/data/adb/service.d/mount_fz_$pkgName.sh"
-    rm "/data/adb/post-fs-data.d/umount_fz_$pkgName.sh"
+    rm "/data/adb/service.d/mount_revanced_$pkgName.sh"
+    rm "/data/adb/post-fs-data.d/umount_revanced_$pkgName.sh"
     rm -rf "/data/local/tmp/patcher/$pkgName.apk"
     grep -q "$pkgName" /proc/mounts && exit 1
     exit 0
@@ -23,8 +23,8 @@ fi
 [ -d /data/adb/post-fs-data.d/ ] || mkdir -p /data/adb/post-fs-data.d/
 [ -d /data/adb/service.d/ ] || mkdir -p /data/adb/service.d/
 
-rm "/data/adb/post-fs-data.d/umount_fz_$pkgName.sh"
-rm "/data/adb/service.d/mount_fz_$pkgName.sh"
+rm "/data/adb/post-fs-data.d/umount_revanced_$pkgName.sh"
+rm "/data/adb/service.d/mount_revanced_$pkgName.sh"
 rm "/data/local/tmp/patcher/$pkgName.apk"
 
 
@@ -37,23 +37,23 @@ fi
 pm list packages | grep -q "$pkgName" || exit 1
 
 stockApp=$(pm path "$pkgName" | sed -n "/base/s/package://p")
-fzApp="/data/local/tmp/patcher/$pkgName.apk"
+revancedApp="/data/local/tmp/patcher/$pkgName.apk"
 
 am force-stop "$pkgName"
 
 {
     grep "$pkgName" /proc/mounts | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -vl
     cp "apps/$appName-$appVer/base-$sourceName.apk" "/data/local/tmp/patcher/$pkgName.apk"
-    chmod -v 644 "$fzApp" && chown -v system:system "$fzApp"
-    chcon -v u:object_r:apk_data_file:s0 "$fzApp"
-    mount -vo bind "$fzApp" "$stockApp"
+    chmod -v 644 "$revancedApp" && chown -v system:system "$revancedApp"
+    chcon -v u:object_r:apk_data_file:s0 "$revancedApp"
+    mount -vo bind "$revancedApp" "$stockApp"
 } > /storage/emulated/0/Patcher/install_log.txt 2>&1
 
 am force-stop "$pkgName"
 
 grep -q "$pkgName" /proc/mounts || exit 1
 
-cat <<EOF >"/data/adb/service.d/mount_fz_$pkgName.sh"
+cat <<EOF >"/data/adb/service.d/mount_revanced_$pkgName.sh"
 #!/system/bin/sh
 while [ "\$(getprop sys.boot_completed | tr -d '\r')" != "1" ]; do sleep 5; done
 
@@ -64,11 +64,11 @@ chcon u:object_r:apk_data_file:s0 "\$base_path"
 [ ! -z "\$stock_path" ] && mount -o bind "\$base_path" "\$stock_path"
 am force-stop $pkgName
 EOF
-cat <<EOF >"/data/adb/post-fs-data.d/umount_fz_$pkgName.sh"
+cat <<EOF >"/data/adb/post-fs-data.d/umount_revanced_$pkgName.sh"
 #!/system/bin/sh
 stock_path="\$(pm path $pkgName | sed -n '/base/s/package://p')"
 [ ! -z "\$stock_path" ] && umount -l "\$stock_path"
 grep $pkgName /proc/mounts | | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l
 EOF
-chmod 0744 "/data/adb/service.d/mount_fz_$pkgName.sh"
-chmod 0744 "/data/adb/post-fs-data.d/umount_fz_$pkgName.sh"
+chmod 0744 "/data/adb/service.d/mount_revanced_$pkgName.sh"
+chmod 0744 "/data/adb/post-fs-data.d/umount_revanced_$pkgName.sh"
