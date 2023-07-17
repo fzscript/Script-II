@@ -22,7 +22,7 @@
 
 # Panduan
 
-[![Panduan Video](https://img.shields.io/badge/YouTube-Panduan_Video-282828?style=for-the-badge&logo=YouTube&logoColor=FFF&labelColor=FF0000)![Video Tidak Ditemukan!](https://img.shields.io/badge/YouTube-Video_Tidak_Ditemukan-282828?style=for-the-badge&logo=YouTube&logoColor=FFF&labelColor=FF0000)](https://www.youtube.com)
+[![Video Tidak Ditemukan](https://img.shields.io/badge/Video_Tidak_Ditemukan-555?style=for-the-badge&logo=YouTube&logoColor=FFF&label=YouTube&labelColor=FF0000)](#)
 
 
 ## Instalasi
