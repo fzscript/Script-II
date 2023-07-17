@@ -6,18 +6,18 @@
         {
             "cli":
             {
-                "org": "fzproject",
-                "repo": "fz-cli"
+                "org": "inotia00",
+                "repo": "revanced-cli"
             },
             "patches":
             {
-                "org": "fzproject",
-                "repo": "fz-patches"
+                "org": "inotia00",
+                "repo": "revanced-patches"
             },
             "integrations":
             {
-                "org": "fzproject",
-                "repo": "fz-integrations"
+                "org": "inotia00",
+                "repo": "revanced-integrations"
             }
         }
     }
