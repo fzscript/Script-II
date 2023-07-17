@@ -1,7 +1,7 @@
 {
     "fzproject": 
     {
-        "projectName": "FZ",
+        "projectName": "Patch-FZ",
         "sources": 
         {
             "cli":
@@ -21,7 +21,7 @@
             }
         }
     },
-    "inotia00": 
+    "revanced": 
     {
         "projectName": "Revanced",
         "sources": 
