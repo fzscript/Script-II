@@ -22,7 +22,7 @@
 
 # Panduan
 
-[![Panduan Video](https://img.shields.io/badge/Panduan_Video-282828?style=for-the-badge&logo=YouTube&logoColor=FFF&labelColor=FF0000)![Video Tidak Ditemukan!](https://img.shields.io/youtube/likes/I8-VM6rJL1c?style=for-the-badge&logo=YouTube&logoColor=ffffff&labelColor=ff0000&color=555555)](https://www.youtube.com)
+[![Panduan Video](https://img.shields.io/badge/Panduan_Video-282828?style=for-the-badge&logo=YouTube&logoColor=FFF&labelColor=FF0000)![Video Tidak Ditemukan!](https://img.shields.io/badge/Video_Tidak_Ditemukan-282828?style=for-the-badge&logo=YouTube&logoColor=FFF&labelColor=FF0000)](https://www.youtube.com)
 
 
 ## Instalasi
