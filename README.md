@@ -1,4 +1,4 @@
-# Patcher 🛠️ ![Hai!](https://img.shields.io/github/stars/decipher3114/Revancify?style=flat-square)
+# Patcher 🛠️ ![Hai!](https://img.shields.io/github/stars/fzscript/Patcher?style=flat-square)
 ### Pembungkus TUI untuk CLI dengan fitur luar biasa.
 
 [![Channel Telegram](https://img.shields.io/badge/Telegram_Channel-2CA5E0?style=for-the-badge&logo=Telegram&logoColor=FFFFFF)](https://telegram.org/channels) [![Grup Telegram](https://img.shields.io/badge/Telegram_Support_Chat-2CA5E0?style=for-the-badge&logo=Telegram&logoColor=FFFFFF)](https://telegram.org/groups)
@@ -6,7 +6,7 @@
 ## Termux
 | Versi Android | Unduh Tautan|
 | ---- | ----- |
-| Android 8+ | [Termux Monet](https://github.com/HardcodedCat/termux-monet/releases/latest) (Strictly Recommended)
+| Android 8+ | [Termux Monet](https://github.com/HardcodedCat/termux-monet/releases/latest) (Sangat Direkomendasikan)
 | Android 4+ | [Termux](https://github.com/termux/termux-app/releases/latest)
 
 # Fitur
