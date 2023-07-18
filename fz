@@ -4,7 +4,7 @@ HOME=/data/data/com.termux/files/home
 BIN=/data/data/com.termux/files/usr/bin
 
 path="$HOME/Script-II"
-cp "$path/fz" "$BIN/fz" >/dev/null 2>&1
+cp "$path/fz" "$BIN/Script-II" >/dev/null 2>&1
 
 help() {
     if [ "$1" == "1" ]; then
@@ -91,13 +91,13 @@ source "$DATA/.envVars" > /dev/null 2>&1
 export DIALOGRC="$path/configs/.dialogrc$theme"
 
 checkdependencies() {
-    if [ -f "$DATA/aapt2" ] && [ -f "$DATA/pup" ] && bins=$(ls "$BIN") && grep -q java <<<"$bins" && grep -q wget <<<"$bins" && grep -q tput <<<"$bins" && grep -q dialog <<<"$bins" && grep -q jq <<<"$bins" && ls "$BIN/fz" >/dev/null 2>&1 && ls "$HOME/storage" >/dev/null 2>&1; then
+    if [ -f "$DATA/aapt2" ] && [ -f "$DATA/pup" ] && bins=$(ls "$BIN") && grep -q java <<<"$bins" && grep -q wget <<<"$bins" && grep -q tput <<<"$bins" && grep -q dialog <<<"$bins" && grep -q jq <<<"$bins" && ls "$BIN/Script-II" >/dev/null 2>&1 && ls "$HOME/storage" >/dev/null 2>&1; then
         return 0
     else
         if ping -c 1 google.com >/dev/null 2>&1; then
             installdependencies || (echo "Dependensi tidak diinstal!" && exit 1)
         else
-            cp "$path/fz" "$BIN/fz"
+            cp "$path/fz" "$BIN/Script-II"
             echo -e "Dependensi tidak diinstal!\nJalankan kembali dengan koneksi Internet."
             exit 1
         fi
@@ -108,7 +108,7 @@ installdependencies() {
     clear
     echo "Menginstal dependensi..."
     arch=$(getprop ro.product.cpu.abi)
-    cp "$path/fz" "$BIN/fz"
+    cp "$path/fz" "$BIN/Script-II"
     sleep 1
     [ ! -d "$HOME/storage" ] && termux-setup-storage
     pkg update -y -o Dpkg::Options::="--force-confnew" || return 1
@@ -138,7 +138,7 @@ checkscripts() {
         n | N)
             echo "Menghapus skrip sepenuhnya!"
             sleep 0.5s
-            rm "$BIN/patcher"
+            rm "$BIN/Script-II"
             echo "Skrip berhasil dihapus."
             exit 0
             ;;
