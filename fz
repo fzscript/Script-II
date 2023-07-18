@@ -49,7 +49,7 @@ do
                         if ping -c 1 google.com >/dev/null 2>&1; then
                             cd "$path"/.. && rm -rf "$path" && git clone --depth=1 https://github.com/fzscript/Script-II.git && fz && exit
                         else
-                            echo "Tidak ada koneksi Internet!"
+                            echo -e "\e[5;37mTidak ada koneksi Internet!\e[0m"
                             exit 1
                         fi
                         ;;
@@ -66,18 +66,18 @@ do
 done
 
 if [ "$(getprop ro.product.cpu.abi)" = "armeabi-v7a" ]; then
-    echo -e "\e[5;33mArsitektur CPU \"armeabi-v7a\" perangkat Anda tidak didukung untuk mem-patch.\e[0m"
-    echo -e "\e[5;31mAnda mungkin mendapatkan kesalahan build.\e[0m"
-    read -N 1 -s -r -p $'\e[5;32mTekan ENTER untuk \e[1;33mLANJUTKAN atau <SPASI> untuk \e[1;33mKELUAR...\n\e[0m' key
+    echo "Arsitektur CPU \"armeabi-v7a\" perangkat Anda tidak didukung untuk mem-patch."
+    echo "Anda mungkin mendapatkan kesalahan build."
+    read -N 1 -s -r -p $'Tekan ENTER untuk LANJUTKAN atau <SPASI> untuk KELUAR...\n' key
     if [ "$key" = " " ]; then
-        echo -e "\e[5;32mKeluar!\e[0m"
+        echo "Keluar!"
         exit
     fi
 fi
 
 terminate() {
     clear
-    echo -e "\e[5;31mSkrip dihentikan!\e[0m"
+    echo "Skrip dihentikan!"
     tput cnorm
     exit 1
 }
@@ -98,7 +98,7 @@ checkdependencies() {
             installdependencies || (echo -e "\e[5;31mDependensi tidak diinstal!\e[0m" && exit 1)
         else
             cp "$path/fz" "$BIN/fz"
-            echo -e "\e[5;31mDependensi tidak diinstal!\n \e[5;33mJalankan kembali dengan koneksi Internet.\e[0m"
+            echo -e "\e[5;31mDependensi tidak diinstal!\n \e[5;37mJalankan kembali dengan koneksi Internet.\e[0m"
             exit 1
         fi
     fi
@@ -129,7 +129,7 @@ checkscripts() {
     else
         echo -e "\e[5;31mSkrip tidak ditemukan!\e[0m"
         echo -e "\e[5;37mApakah Anda ingin menginstal ulang?\e[0m"
-        read -e -r -p "\e[5;37m[Y/N]: \e[0m" choice
+        read -r -p "[Y/N]: " choice
         case "$choice" in
         y | Y)
             rm -rf "$path"
@@ -142,8 +142,8 @@ checkscripts() {
             echo -e "\e[5;32mSkrip berhasil dihapus.\e[0m"
             exit 0
             ;;
-        ?)
-            echo -e "Opsi tidak valid"
+        )
+            echo -e "\e[5;31mOpsi tidak valid\e[0m"
             exit 1
             ;;
         esac
@@ -172,7 +172,7 @@ exitstatus=$?
 clear
 cd "$HOME" || :
 if [ $exitstatus -eq 0 ]; then
-    echo -e "\e[5;32mKeluar!\e[0m"
+    echo -e "\e[5;37mKeluar!\e[0m"
 else
     echo -e "\e[5;31mSkrip dihentikan!\e[0m"
     rm -rf -- *cache >/dev/null 2>&1
