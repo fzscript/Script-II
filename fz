@@ -18,7 +18,7 @@ help() {
         IFS=","
         echo -e "\e[1;31mArgumen tidak valid\nPassed: ${invalidArgs[*]}\n\e[0m"
     fi
-    echo -e "\e[1;34mScript II\n\e[0m
+    echo -e "\e[1;34mScript-II\n\e[0m
 \e[1;33mPenggunaan:\e[0m \e[1;32mfz [OPSI]\n\e[0m
 \e[1;33mPilihan:\e[0m
 \e[1;33m-n, --no-root     \e[1;34mJalankan tanpa izin ROOT\e[0m
@@ -83,7 +83,7 @@ terminate() {
 }
 trap terminate SIGTERM SIGINT SIGABRT
 
-DATA="$HOME/Script-II/data"
+DATA="$HOME/FZ-data"
 [ ! -d $DATA ] && mkdir -p "$DATA"
 # shellcheck source=/dev/null
 source "$DATA/.envVars" > /dev/null 2>&1
