@@ -19,14 +19,14 @@ help() {
         echo -e "\e[0;31mArgumen tidak valid\nPassed: ${invalidArgs[*]}\n\e[0m"
     fi
     echo -e "\e[1;32mScript-II by FZ Project\n\e[0m
-\e[5;33mPenggunaan: fz [OPSI]\n\e[0m
-\e[5;33mPilihan:\e[0m
-\e[5;33m-n, --no-root     Jalankan tanpa izin ROOT\e[0m
-\e[5;33m-o, --offline     Jalankan tanpa pembaruan skrip\e[0m
-\e[5;33m-r, --reinstall   Instal ulang skrip\e[0m
-\e[5;33m-h, --help        Mencetak pernyataan bantuan\e[0m
+\e[0;33mPenggunaan: fz [OPSI]\n\e[0m
+\e[0;33mPilihan:\e[0m
+\e[0;33m-n, --no-root     Jalankan tanpa izin ROOT\e[0m
+\e[0;33m-o, --offline     Jalankan tanpa pembaruan skrip\e[0m
+\e[0;33m-r, --reinstall   Instal ulang skrip\e[0m
+\e[0;33m-h, --help        Mencetak pernyataan bantuan\e[0m
 
-\e[5;32mThank's to: \n[Decipher] https://github.com/decipher3114 \n[Revanced] https://github.com/revanced \n[Revanced Extended] https://github.com/inotia00\e[0m"
+\e[0;32mThank's to: \n[Decipher] https://github.com/decipher3114 \n[Revanced] https://github.com/revanced \n[Revanced Extended] https://github.com/inotia00\e[0m"
     exit "$1"
 }
 
