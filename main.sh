@@ -27,7 +27,7 @@ initialize() {
     [ ! -d apps ] && mkdir -p apps
     arch=$(getprop ro.product.cpu.abi)
     repoDir="$HOME/Script-II"
-    header=(dialog --backtitle "Script-II by FZ Project | [Arch: $arch, ROOT: $rootStatus]" --no-shadow)
+    header=(dialog --backtitle "Script II by FZ Project | [Arch: $arch ROOT: $rootStatus]" --no-shadow)
     envFile=config.cfg
     [ ! -f "apps/.appSize" ] && : > "apps/.appSize"
 
