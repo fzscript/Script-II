@@ -128,7 +128,7 @@ checkscripts() {
         return 0
     else
         echo -e "\e[5;31mSkrip tidak ditemukan!\e[0m"
-        echo -e "\e[5;37mApakah Anda ingin menginstal ulang?\e[0m"
+        echo "Apakah Anda ingin menginstal ulang?"
         read -r -p "[Y/N]: " choice
         case "$choice" in
         y | Y)
@@ -136,13 +136,13 @@ checkscripts() {
             git clone --depth=1 https://github.com/fzscript/Script-II.git && fz && exit
             ;;
         n | N)
-            echo -e "\e[5;33mMenghapus skrip sepenuhnya!\e[0m"
+            echo "Menghapus skrip sepenuhnya!"
             sleep 0.5s
             rm "$BIN/fz"
-            echo -e "\e[5;32mSkrip berhasil dihapus.\e[0m"
+            echo "Skrip berhasil dihapus."
             exit 0
             ;;
-        ${invalidArgs[*]})
+        ?)
             echo -e "\e[5;31mOpsi tidak valid\e[0m"
             exit 1
             ;;
@@ -172,7 +172,7 @@ exitstatus=$?
 clear
 cd "$HOME" || :
 if [ $exitstatus -eq 0 ]; then
-    echo -e "\e[5;37mKeluar!\e[0m"
+    echo -e "\e[5;32mKeluar!\e[0m"
 else
     echo -e "\e[5;31mSkrip dihentikan!\e[0m"
     rm -rf -- *cache >/dev/null 2>&1
