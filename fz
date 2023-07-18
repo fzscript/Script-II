@@ -20,11 +20,11 @@ help() {
     fi
     echo -e "\e[1;32mScript-II by FZ Project\n\e[0m
 \e[1;33mPenggunaan:\e[0m \e[1;33mfz [OPSI]\n\e[0m
-\e[1;33mPilihan:\e[0m
-\e[1;33m-n, --no-root     \e[1;33mJalankan tanpa izin ROOT\e[0m
-\e[1;33m-o, --offline     \e[1;33mJalankan tanpa pembaruan skrip\e[0m
-\e[1;33m-r, --reinstall   \e[1;33mInstal ulang skrip\e[0m
-\e[1;33m-h, --help        \e[1;33mMencetak pernyataan bantuan\e[0m
+\e[0;33mPilihan:\e[0m
+\e[1;33m-n, --no-root     \e[5;33mJalankan tanpa izin ROOT\e[0m
+\e[2;33m-o, --offline     \e[6;33mJalankan tanpa pembaruan skrip\e[0m
+\e[3;33m-r, --reinstall   \e[7;33mInstal ulang skrip\e[0m
+\e[4;33m-h, --help        \e[8;33mMencetak pernyataan bantuan\e[0m
 
 \e[1;32mThank's to \n[Decipher]: https://github.com/decipher3114 \n[Revanced]: https://github.com/revanced \n[Revanced Extended]: https://github.com/inotia00\e[0m"
     exit "$1"
