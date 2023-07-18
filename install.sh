@@ -13,8 +13,8 @@ if [ -z "$TERMUX_VERSION" ]; then
     exit 1
 fi
 
-if [ -d "$HOME/Patcher" ]; then
-    ./Patcher/patcher
+if [ -d "$HOME/fz" ]; then
+    ./Script-II/fz
     exit 0
 fi
 
@@ -30,8 +30,8 @@ Kemungkinan penyebab kesalahan:
     pkg install git -y -o Dpkg::Options::="--force-confnew"
 fi
 
-if git clone --depth=1 https://github.com/fzscript/Patcher.git; then
-    ./Patcher/patcher
+if git clone --depth=1 https://github.com/fzproject/Script-II.git; then
+    ./Script-II/fz
 else
     echo -e "\e[1;31mInstal Gagal!\e[0m"
     echo "Harap Coba lagi"
