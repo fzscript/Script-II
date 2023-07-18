@@ -43,7 +43,7 @@ initialize() {
     source "$envFile"
     if [ -z "$source" ]; then
         readarray -t allSources < <(jq -r --arg source "$source" 'to_entries | .[] | .key,"["+.value.projectName+"]","on"' "$repoDir"/sources.json)
-        source=$("${header[@]}" --begin 2 0 --title '| Pilih Sumber |' --no-cancel --ok-label "OK" --radiolist "Gunakan tombol panah untuk menavigasi\nTekan<SPASI>untuk memilih opsi" -1 -1 0 "${allSources[@]}" 2>&1 >/dev/tty)
+        source=$("${header[@]}" --begin 2 0 --title '| Pilih Sumber |' --no-cancel --ok-label "OK" --radiolist "Gunakan tombol panah untuk menavigasi\nTekan<spasi>untuk memilih opsi" -1 -1 0 "${allSources[@]}" 2>&1 >/dev/tty)
         setEnv source "$source" update "$envFile"
     fi
     [ "$rootStatus" == "Y" ] && menuEntry="Uninstal Aplikasi Patch" || menuEntry="Unduh microG"
