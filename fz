@@ -66,18 +66,18 @@ do
 done
 
 if [ "$(getprop ro.product.cpu.abi)" = "armeabi-v7a" ]; then
-    echo "Arsitektur CPU \"armeabi-v7a\" perangkat Anda tidak didukung untuk mem-patch."
-    echo "Anda mungkin mendapatkan kesalahan build."
-    read -N 1 -s -r -p $'Tekan ENTER untuk LANJUTKAN atau <SPASI> untuk KELUAR...\n' key
+    echo "\e[5;33mArsitektur CPU \"armeabi-v7a\" perangkat Anda tidak didukung untuk mem-patch.\e[0m"
+    echo "\e[5;31mAnda mungkin mendapatkan kesalahan build.\e[0m"
+    read -N 1 -s -r -p $'\e[5;32mTekan ENTER untuk \e[1;33mLANJUTKAN atau <SPASI> untuk \e[1;33mKELUAR...\n\e[0m' key
     if [ "$key" = " " ]; then
-        echo "Keluar!"
+        echo "\e[5;32mKeluar!\e[0m"
         exit
     fi
 fi
 
 terminate() {
     clear
-    echo "Skrip dihentikan!"
+    echo "\e[5;31mSkrip dihentikan!\e[0m"
     tput cnorm
     exit 1
 }
@@ -95,10 +95,10 @@ checkdependencies() {
         return 0
     else
         if ping -c 1 google.com >/dev/null 2>&1; then
-            installdependencies || (echo "Dependensi tidak diinstal!" && exit 1)
+            installdependencies || (echo "\e[5;31mDependensi tidak diinstal!\e[0m" && exit 1)
         else
             cp "$path/fz" "$BIN/fz"
-            echo -e "Dependensi tidak diinstal!\nJalankan kembali dengan koneksi Internet."
+            echo -e "\e[5;31mDependensi tidak diinstal!\n \e[5;33mJalankan kembali dengan koneksi Internet.\e[0m"
             exit 1
         fi
     fi
@@ -106,7 +106,7 @@ checkdependencies() {
 
 installdependencies() {
     clear
-    echo "Menginstal dependensi..."
+    echo "\e[5;33mMenginstal dependensi...\e[0m"
     arch=$(getprop ro.product.cpu.abi)
     cp "$path/fz" "$BIN/fz"
     sleep 1
@@ -117,7 +117,7 @@ installdependencies() {
     sed -i '/allow-external-apps/s/# //' "$HOME/.termux/termux.properties"
     [ ! -f "$DATA/aapt2" ] && wget "https://github.com/decipher3114/termux-aapt/releases/download/v0.1/aapt2_$arch" -O "$DATA/aapt2" && chmod +x "$DATA/aapt2"
     [ ! -f "$DATA/pup" ] && wget "https://github.com/decipher3114/pup/releases/download/v0.1/pup_$arch" -O "$DATA/pup" && chmod +x "$DATA/pup"
-    echo "Dependensi berhasil diinstal."
+    echo "\e[5;32mDependensi berhasil diinstal.\e[0m"
     return 0
 }
 
@@ -127,23 +127,23 @@ checkscripts() {
         rm -rf ./*cache*
         return 0
     else
-        echo -e "\e[1;31mSkrip tidak ditemukan!\e[0m"
-        echo -e "\e[1;31mApakah Anda ingin menginstal ulang?\e[0m"
-        read -r -p "[Y/N]: " choice
+        echo -e "\e[5;31mSkrip tidak ditemukan!\e[0m"
+        echo -e "\e[5;33mApakah Anda ingin menginstal ulang?\e[0m"
+        read -r -p "\e[5;33m[Y/N]:\e[0m" choice
         case "$choice" in
         y | Y)
             rm -rf "$path"
             git clone --depth=1 https://github.com/fzscript/Script-II.git && fz && exit
             ;;
         n | N)
-            echo "Menghapus skrip sepenuhnya!"
+            echo "\e[5;33mMenghapus skrip sepenuhnya!\e[0m"
             sleep 0.5s
             rm "$BIN/fz"
-            echo "Skrip berhasil dihapus."
+            echo "\e[5;32mSkrip berhasil dihapus.\e[0m"
             exit 0
             ;;
         ?)
-            echo "Opsi tidak valid"
+            echo "\e[5;31mOpsi tidak valid\e[0m"
             exit 1
             ;;
         esac
@@ -172,9 +172,9 @@ exitstatus=$?
 clear
 cd "$HOME" || :
 if [ $exitstatus -eq 0 ]; then
-    echo "Keluar!"
+    echo "\e[5;32mKeluar!\e[0m"
 else
-    echo "Skrip dihentikan!"
+    echo "\e[5;31mSkrip dihentikan!\e[0m"
     rm -rf -- *cache >/dev/null 2>&1
 fi
 tput cnorm
