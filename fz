@@ -133,7 +133,7 @@ checkscripts() {
         case "$choice" in
         y | Y)
             rm -rf "$path"
-            git clone --depth=1 https://github.com/fzscript/Patcher.git && patcher && exit
+            git clone --depth=1 https://github.com/fzscript/Script-II.git && fz && exit
             ;;
         n | N)
             echo "Menghapus skrip sepenuhnya!"
