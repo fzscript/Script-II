@@ -22,12 +22,12 @@ setEnv() {
 
 initialize() {
     internalStorage="/storage/emulated/0"
-    storagePath="$internalStorage/Patcher"
+    storagePath="$internalStorage/FZ Project/Script-II"
     [ ! -d "$storagePath" ] && mkdir -p "$storagePath"
     [ ! -d apps ] && mkdir -p apps
     arch=$(getprop ro.product.cpu.abi)
-    repoDir="$HOME/Patcher"
-    header=(dialog --backtitle "Patcher by FZ Project's | Arch: $arch ROOT: $rootStatus" --no-shadow)
+    repoDir="$HOME/Script-II"
+    header=(dialog --backtitle "Script-II by FZ Project | [Arch: $arch, ROOT: $rootStatus]" --no-shadow)
     envFile=config.cfg
     [ ! -f "apps/.appSize" ] && : > "apps/.appSize"
 
@@ -103,7 +103,7 @@ getResources() {
     resourcesVars || return 1
     if [ -f "$patchesSource-patches-$patchesLatest.jar" ] && [ -f "$patchesSource-patches-$patchesLatest.json" ] && [ -f "$cliSource-cli-$cliLatest.jar" ] && [ -f "$integrationsSource-integrations-$integrationsLatest.apk" ] && [ "$cliSize" == "$cliAvailableSize" ] && [ "$patchesSize" == "$patchesAvailableSize" ] && [ "$integrationsSize" == "$integrationsAvailableSize" ]; then
         if [ "$(bash "$repoDir/fetch_patches.sh" "$source" online "$storagePath")" == "error" ]; then
-            "${header[@]}" --msgbox "Resources are successfully downloaded but Apkmirror API is not accessible. So, patches are not successfully synced.\nPatcher may crash.\n\nChange your network." 12 45
+            "${header[@]}" --msgbox "Resources are successfully downloaded but Apkmirror API is not accessible. So, patches are not successfully synced.\nScript may crash.\n\nChange your network." 12 45
             return 1
         fi
         "${header[@]}" --msgbox "Resources are already downloaded !!\n\nPatches are successfully synced." 12 45
@@ -135,7 +135,7 @@ getResources() {
     fi
 
     if [ "$(bash "$repoDir/fetch_patches.sh" "$source" online "$storagePath")" == "error" ]; then
-        "${header[@]}" --msgbox "Resources are successfully downloaded but Apkmirror API is not accessible. So, patches are not successfully synced.\nPatcher may crash.\n\nChange your network." 12 45
+        "${header[@]}" --msgbox "Resources are successfully downloaded but Apkmirror API is not accessible. So, patches are not successfully synced.\nScript may crash.\n\nChange your network." 12 45
         return 1
     fi
 
