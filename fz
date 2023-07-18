@@ -128,7 +128,7 @@ checkscripts() {
         return 0
     else
         echo -e "\e[5;31mSkrip tidak ditemukan!\e[0m"
-        echo -e "\e[5;30mApakah Anda ingin menginstal ulang?\e[0m"
+        echo -e "\e[5;37mApakah Anda ingin menginstal ulang?\e[0m"
         read -r -p "[Y/N]: " choice
         case "$choice" in
         y | Y)
