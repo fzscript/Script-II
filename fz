@@ -142,7 +142,7 @@ checkscripts() {
             echo -e "\e[5;32mSkrip berhasil dihapus.\e[0m"
             exit 0
             ;;
-        )
+        ${invalidArgs[*]})
             echo -e "\e[5;31mOpsi tidak valid\e[0m"
             exit 1
             ;;
