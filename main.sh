@@ -22,7 +22,7 @@ setEnv() {
 
 initialize() {
     internalStorage="/storage/emulated/0"
-    storagePath="$internalStorage/FZ Project/Script-II"
+    storagePath="$internalStorage/FZ/Script-II"
     [ ! -d "$storagePath" ] && mkdir -p "$storagePath"
     [ ! -d apps ] && mkdir -p apps
     arch=$(getprop ro.product.cpu.abi)
@@ -259,7 +259,7 @@ editPatchOptions() {
 YInstall() {
     "${header[@]}" --infobox "Please Wait !!\nInstalling Patched $appName..." 12 45
     if ! su -mm -c "/system/bin/sh $repoDir/root_util.sh mount $pkgName $appName $appVer $sourceName" > /dev/null 2>&1; then
-        "${header[@]}" --msgbox "Installation Failed !!\nLogs saved to \"Internal-Storage/FZ Project/Script-II/install_log.txt\". Share the Install logs to developer." 12 45
+        "${header[@]}" --msgbox "Installation Failed !!\nLogs saved to \"Internal-Storage/FZ/Script-II/install_log.txt\". Share the Install logs to developer." 12 45
         return 1
     else
         "${header[@]}" --msgbox "$appName installed Successfully !!" 12 45
@@ -554,7 +554,7 @@ patchApp() {
     tput civis
     sleep 1
     if [ ! -f "apps/$appName-$appVer/base-$sourceName.apk" ]; then
-        "${header[@]}" --msgbox "Oops, Patching failed !!\nLogs saved to \"Internal Storage/FZ Project/Script-II/patch_log.txt\". Share the Patchlog to developer." 12 45
+        "${header[@]}" --msgbox "Oops, Patching failed !!\nLogs saved to \"Internal Storage/FZ/Script-II/patch_log.txt\". Share the Patchlog to developer." 12 45
         return 1
     fi
 }
