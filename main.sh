@@ -259,7 +259,7 @@ editPatchOptions() {
 YInstall() {
     "${header[@]}" --infobox "Please Wait !!\nInstalling Patched $appName..." 12 45
     if ! su -mm -c "/system/bin/sh $repoDir/root_util.sh mount $pkgName $appName $appVer $sourceName" > /dev/null 2>&1; then
-        "${header[@]}" --msgbox "Installation Failed !!\nLogs saved to \"Internal-Storage/Patcher/install_log.txt\". Share the Install logs to developer." 12 45
+        "${header[@]}" --msgbox "Installation Failed !!\nLogs saved to \"Internal-Storage/FZ Project/Script-II/install_log.txt\". Share the Install logs to developer." 12 45
         return 1
     else
         "${header[@]}" --msgbox "$appName installed Successfully !!" 12 45
@@ -303,7 +303,7 @@ refreshJson() {
         internet || return 1
         "${header[@]}" --infobox "Please Wait !!" 12 45
         if [ "$(bash "$repoDir/fetch_patches.sh" "$source" online "$storagePath")" == "error" ]; then
-            "${header[@]}" --msgbox "Oops !! Apkmirror API is not accessible. Patches are not successfully synced.\nPatcher may crash.\n\nChange your network." 12 45
+            "${header[@]}" --msgbox "Oops !! Apkmirror API is not accessible. Patches are not successfully synced.\nScript may crash.\n\nChange your network." 12 45
             return 1
         fi
     fi
@@ -554,7 +554,7 @@ patchApp() {
     tput civis
     sleep 1
     if [ ! -f "apps/$appName-$appVer/base-$sourceName.apk" ]; then
-        "${header[@]}" --msgbox "Oops, Patching failed !!\nLogs saved to \"Internal Storage/Patcher/patch_log.txt\". Share the Patchlog to developer." 12 45
+        "${header[@]}" --msgbox "Oops, Patching failed !!\nLogs saved to \"Internal Storage/FZ Project/Script-II/patch_log.txt\". Share the Patchlog to developer." 12 45
         return 1
     fi
 }
@@ -607,7 +607,7 @@ deleteComponents() {
 }
 
 preferences() {
-    prefsArray=("lightTheme" "$lightTheme" "Use Light theme for Patcher" "riplibsFZ" "$riplibsFZ" "[FZ] Removes extra libs from app" "forceUpdateCheckStatus" "$forceUpdateCheckStatus" "Check for resources update at startup" "patchMenuBeforePatching" "$patchMenuBeforePatching" "Shows Patches Menu before Patching starts" "launchAppAfterMount" "$launchAppAfterMount" "[Root] Launches app automatically after mount" allowVersionDowngrade "$allowVersionDowngrade" "[Root] Allows downgrading version if any such module is present" "fetchPreRelease" "$fetchPreRelease" "Fetches the pre-release version of resources")
+    prefsArray=("lightTheme" "$lightTheme" "Use Light theme for Script-II" "riplibsFZ" "$riplibsFZ" "[FZ] Removes extra libs from app" "forceUpdateCheckStatus" "$forceUpdateCheckStatus" "Check for resources update at startup" "patchMenuBeforePatching" "$patchMenuBeforePatching" "Shows Patches Menu before Patching starts" "launchAppAfterMount" "$launchAppAfterMount" "[Root] Launches app automatically after mount" allowVersionDowngrade "$allowVersionDowngrade" "[Root] Allows downgrading version if any such module is present" "fetchPreRelease" "$fetchPreRelease" "Fetches the pre-release version of resources")
     readarray -t prefsArray < <(for pref in "${prefsArray[@]}"; do sed 's/false/off/;s/true/on/' <<< "$pref"; done)
     read -ra newPrefs < <("${header[@]}" --begin 2 0 --title '| Preferences Menu |' --item-help --no-items --no-cancel --ok-label "Save" --checklist "Use arrow keys to navigate; Press Spacebar to toogle patch" $(($(tput lines) - 3)) -1 15 "${prefsArray[@]}" 2>&1 >/dev/tty)
     sed -i 's/true/false/' "$envFile"
