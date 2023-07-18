@@ -43,10 +43,10 @@ initialize() {
     source "$envFile"
     if [ -z "$source" ]; then
         readarray -t allSources < <(jq -r --arg source "$source" 'to_entries | .[] | .key,"["+.value.projectName+"]","on"' "$repoDir"/sources.json)
-        source=$("${header[@]}" --begin 2 0 --title '| Source Selection Menu |' --no-cancel --ok-label "Done" --radiolist "Use arrow keys to navigate; Press Spacebar to select option" -1 -1 0 "${allSources[@]}" 2>&1 >/dev/tty)
+        source=$("${header[@]}" --begin 2 0 --title '| Pilih Sumber |' --no-cancel --ok-label "OK" --radiolist "Gunakan tombol panah untuk menavigasi\nTekan<SPASI>untuk memilih opsi" -1 -1 0 "${allSources[@]}" 2>&1 >/dev/tty)
         setEnv source "$source" update "$envFile"
     fi
-    [ "$rootStatus" == "Y" ] && menuEntry="Uninstall Patched app" || menuEntry="Download microG"
+    [ "$rootStatus" == "Y" ] && menuEntry="Uninstal Aplikasi Patch" || menuEntry="Unduh microG"
 
     [ "$lightTheme" == "true" ] && theme=light || theme=Dark
     export DIALOGRC="$repoDir/configs/.dialogrc$theme"
