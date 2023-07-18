@@ -19,7 +19,7 @@ help() {
         echo -e "\e[5;31mArgumen tidak valid\nPassed: ${invalidArgs[*]}\n\e[0m"
     fi
     echo -e "\e[1;32mScript-II by FZ Project\n\e[0m
-\e[5;33mPenggunaan: \e[5;32mfz [OPSI]\n\e[0m
+\e[5;33mPenggunaan: fz [OPSI]\n\e[0m
 \e[5;33mPilihan:\e[0m
 \e[5;33m-n, --no-root     Jalankan tanpa izin ROOT\e[0m
 \e[5;33m-o, --offline     Jalankan tanpa pembaruan skrip\e[0m
