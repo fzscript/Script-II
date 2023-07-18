@@ -49,7 +49,7 @@ do
                         if ping -c 1 google.com >/dev/null 2>&1; then
                             cd "$path"/.. && rm -rf "$path" && git clone --depth=1 https://github.com/fzscript/Script-II.git && fz && exit
                         else
-                            echo -e "\e[0;37mTidak ada koneksi Internet!\e[0m"
+                            echo -e "\e[0;33mTidak ada koneksi Internet!\e[0m"
                             exit 1
                         fi
                         ;;
@@ -98,7 +98,7 @@ checkdependencies() {
             installdependencies || (echo -e "\e[0;31mDependensi tidak diinstal!\e[0m" && exit 1)
         else
             cp "$path/fz" "$BIN/fz"
-            echo -e "\e[0;31mDependensi tidak diinstal!\n \e[0;37mJalankan kembali dengan koneksi Internet.\e[0m"
+            echo -e "\e[0;31mDependensi tidak diinstal!\n \e[0;33mJalankan kembali dengan koneksi Internet.\e[0m"
             exit 1
         fi
     fi
@@ -128,7 +128,7 @@ checkscripts() {
         return 0
     else
         echo -e "\e[0;31mSkrip tidak ditemukan!\e[0m"
-        echo "Apakah Anda ingin menginstal ulang?"
+        echo -e "\e[0;33mApakah Anda ingin menginstal ulang?\e[0m"
         read -r -p "[Y/N]: " choice
         case "$choice" in
         y | Y)
@@ -136,10 +136,10 @@ checkscripts() {
             git clone --depth=1 https://github.com/fzscript/Script-II.git && fz && exit
             ;;
         n | N)
-            echo "Menghapus skrip sepenuhnya!"
+            echo -e "\e[0;33mMenghapus skrip sepenuhnya!\e[0m"
             sleep 0.5s
             rm "$BIN/fz"
-            echo "Skrip berhasil dihapus."
+            echo -e "\e[0;32mSkrip berhasil dihapus.\e[0m"
             exit 0
             ;;
         ?)
@@ -172,7 +172,7 @@ exitstatus=$?
 clear
 cd "$HOME" || :
 if [ $exitstatus -eq 0 ]; then
-    echo -e "\e[0;37mKeluar!\e[0m"
+    echo -e "\e[0;32mKeluar!\e[0m"
 else
     echo -e "\e[0;31mSkrip dihentikan!\e[0m"
     rm -rf -- *cache >/dev/null 2>&1
