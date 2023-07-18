@@ -26,7 +26,7 @@ help() {
 \e[0;33m-r, --reinstall   Instal ulang skrip\e[0m
 \e[0;33m-h, --help        Mencetak pernyataan bantuan\e[0m
 
-\e[0;33mThank's to \n[Decipher]: \e[0;33mhttps://github.com/decipher3114 \n[Revanced]: \e[0;33mhttps://github.com/revanced \n[Revanced Extended]: \e[0;33mhttps://github.com/inotia00\e[0m"
+\e[0;33mThank's to\n [Decipher]:\e[0m \e[0;33mhttps://github.com/decipher3114\n\e[0m \e[0;33m[Revanced]:\e[0m \e[0;33mhttps://github.com/revanced\n\e[0m \e[0;32m[Revanced Extended]:\e[0m \e[0;33mhttps://github.com/inotia00\e[0m"
     exit "$1"
 }
 
