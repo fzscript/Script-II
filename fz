@@ -83,7 +83,7 @@ terminate() {
 }
 trap terminate SIGTERM SIGINT SIGABRT
 
-DATA="$HOME/fz-data"
+DATA="$HOME/FZ/Script-II"
 [ ! -d $DATA ] && mkdir -p "$DATA"
 # shellcheck source=/dev/null
 source "$DATA/.envVars" > /dev/null 2>&1
