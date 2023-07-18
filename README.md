@@ -1,5 +1,5 @@
 # Script &#8545; 🛠️ ![Hai!](https://img.shields.io/github/stars/fzscript/Patcher)
-### Pembungkus TUI untuk FZ CLI dengan fitur luar biasa.
+### Pembungkus TUI untuk CLI dengan fitur luar biasa.
 
 ## Termux
 | Versi Android | Unduh Tautan|
