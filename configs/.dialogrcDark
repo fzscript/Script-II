@@ -42,7 +42,7 @@ dialog_color = screen_color
 title_color = screen_color
 
 # Warna batas kotak dialog
-border_color = (RED,BLACK,ON)
+border_color = (GREEN,BLACK,OFF)
 
 # Warna tombol aktif
 button_active_color = (BLACK,GREEN,OFF)
@@ -90,7 +90,7 @@ menubox_border_color = border_color
 item_color = (WHITE,BLACK,OFF)
 
 # Warna objek yang dipilih
-item_selected_color = (BLACK,BLACK,OF)
+item_selected_color = (GREEN,BLACK,OFF)
 
 # Warna tag
 tag_color = title_color
