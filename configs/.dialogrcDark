@@ -48,7 +48,7 @@ border_color = (GREEN,BLACK,OFF)
 button_active_color = (BLACK,GREEN,ON)
 
 # Warna tombol non-aktif
-button_inactive_color = (BLACK,BLACK,ON)
+button_inactive_color = (WHITE,BLACK,OFF)
 
 # Warna kunci tombol aktif
 button_key_active_color = button_active_color
@@ -90,7 +90,7 @@ menubox_border_color = border_color
 item_color = (WHITE,BLACK,OFF)
 
 # Warna objek yang dipilih
-item_selected_color = (BLACK,GREEN,OFF)
+item_selected_color = (BLACK,GREEN,ON)
 
 # Warna tag
 tag_color = title_color
