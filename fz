@@ -153,7 +153,7 @@ checkscripts() {
 checkdependencies
 checkscripts
 tput civis
-dialog --colors "black" --keep-window --no-shadow --keep-window --infobox "\n    █▀ █▀▀ █▀█ █ █▀█ ▀█▀ ▄▄ █ █\n    ▄█ █▄▄ █▀▄ █ █▀▀ ░█░ ░░ █ █\n\nStatus    : Memeriksa...\nDiperbarui: Memeriksa...\n\nPowered by FZ Project" 10 40
+dialog --colors --keep-window --no-shadow --keep-window --infobox "\n    █▀ █▀▀ █▀█ █ █▀█ ▀█▀ ▄▄ █ █\n    ▄█ █▄▄ █▀▄ █ █▀▀ ░█░ ░░ █ █\n\nStatus    : Memeriksa...\nDiperbarui: Memeriksa...\n\nPowered by FZ Project" 10 40
 
 if ping -c 1 google.com >/dev/null 2>&1; then
     status=${status:-Online}
