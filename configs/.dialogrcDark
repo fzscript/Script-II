@@ -45,7 +45,7 @@ title_color = screen_color
 border_color = (GREEN,BLACK,OFF)
 
 # Warna tombol aktif
-button_active_color = (GREEN,BLACK,OFF)
+button_active_color = (WHITE,GREEN,OFF)
 
 # Warna tombol non-aktif
 button_inactive_color = screen_color
