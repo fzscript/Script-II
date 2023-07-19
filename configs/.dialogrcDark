@@ -86,10 +86,10 @@ menubox_color = screen_color
 # Warna batas kotak menu
 menubox_border_color = border_color
 
-# Warna item
+# Warna objek
 item_color = screen_color
 
-# Warna item yang dipilih
+# Warna objek yang dipilih
 item_selected_color = button_active_color
 
 # Warna tag
@@ -116,7 +116,7 @@ uarrow_color = screen_color
 # Warna panah bawah
 darrow_color = uarrow_color
 
-# Warna teks-bantuan item
+# Warna objek teks-bantuan
 itemhelp_color = screen_color
 
 # Warna teks form aktif
@@ -125,7 +125,7 @@ form_active_text_color = (WHITE,BLACK,OFF,ON)
 # Warna teks form non-aktif
 form_text_color = screen_color
 
-# Warna item form hanya dapat dibaca
+# Warna objek form hanya dapat dibaca
 form_item_readonly_color = screen_color
 
 # Warna pengukur kotak dialog
