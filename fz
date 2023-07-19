@@ -18,7 +18,7 @@ help() {
         IFS=","
         echo -e "\e[0;31mArgumen tidak valid\nPassed: ${invalidArgs[*]}\n\e[0m"
     fi
-    echo "Script-II by FZ Project\n
+    echo -e "Script-II by FZ Project\n
 Penggunaan: fz [OPSI]\n
 Pilihan:
 -n, --no-root     Jalankan tanpa izin ROOT
