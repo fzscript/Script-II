@@ -42,7 +42,7 @@ dialog_color = (WHITE,BLACK,OFF)
 title_color = (GREEN,BLACK,OFF)
 
 # Warna batas kotak dialog
-border_color = (GREEN,BLACK,OFF)
+border_color = (WHITE,BLACK,OFF)
 
 # Warna tombol aktif
 button_active_color = (BLACK,GREEN,ON)
