@@ -36,7 +36,7 @@ screen_color = (WHITE,BLACK,OFF)
 shadow_color = (BLACK,BLACK,OFF)
 
 # Warna kotak dialog
-dialog_color = (WHITE,BLACK,OFF)
+dialog_color = (YELLOW,BLACK,OFF)
 
 # Warna judul kotak dialog
 title_color = (GREEN,BLACK,OFF)
