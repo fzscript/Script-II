@@ -54,7 +54,7 @@ do
                         fi
                         ;;
     "-o" | "--offline")
-                        status="\e[0;31mOffline [dipaksa]\e[0m"
+                        status="Offline [dipaksa]"
                         shift
                         ;;
     "--")
