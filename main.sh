@@ -80,19 +80,19 @@ resourcesVars() {
     "${header[@]}" --infobox "Please Wait !!\nFetching resources data from github API..." 12 45
     readarray -t resources < <(jq -r --arg source "$source" '.[$source].sources | keys_unsorted[]' "$repoDir"/sources.json)
     readarray -t links < <(jq -r --arg source "$source" '.[$source].sources[] | .org+"/"+.repo' "$repoDir"/sources.json)
-    : >".${source}-data"
+    : >".${source}"
     [ "$fetchPreRelease" == "false" ] && stableRelease="/latest" || stableRelease=""
     i=0 && for resource in "${resources[@]}"; do
-        curl -s --fail-early --connect-timeout 2 --max-time 5 "https://api.github.com/repos/${links[$i]}/releases$stableRelease" | jq -r --arg resource "$resource" 'if type == "array" then .[0] else . end | $resource+"Latest="+.tag_name, (.assets[] | if .content_type == "application/json" then "jsonUrl="+.browser_download_url, "jsonSize="+(.size|tostring) else $resource+"Url="+.browser_download_url, $resource+"Size="+(.size|tostring) end)' >>".${source}-data"
+        curl -s --fail-early --connect-timeout 2 --max-time 5 "https://api.github.com/repos/${links[$i]}/releases$stableRelease" | jq -r --arg resource "$resource" 'if type == "array" then .[0] else . end | $resource+"Latest="+.tag_name, (.assets[] | if .content_type == "application/json" then "jsonUrl="+.browser_download_url, "jsonSize="+(.size|tostring) else $resource+"Url="+.browser_download_url, $resource+"Size="+(.size|tostring) end)' >>".${source}"
         i=$(("$i" + 1))
     done
 
-    if [ "$(wc -l <".${source}-data")" -lt "11" ]; then
+    if [ "$(wc -l <".${source}")" -lt "11" ]; then
         "${header[@]}" --msgbox "Oops! Unable to connect to Github.\n\nRetry or change your Network." 12 45
         return 1
     fi
     # shellcheck source=/dev/null
-    source ./".${source}-data"
+    source ./".${source}"
 
     cliAvailableSize=$(ls "$cliSource"-cli-*.jar &> /dev/null && du -b "$cliSource"-cli-*.jar | cut -d $'\t' -f 1 || echo 0)
     patchesAvailableSize=$(ls "$patchesSource"-patches-*.jar &> /dev/null && du -b "$patchesSource"-patches-*.jar | cut -d $'\t' -f 1 || echo 0)
@@ -313,9 +313,9 @@ refreshJson() {
 }
 
 checkResources() {
-    if [ -f ".${source}-data" ]; then
+    if [ -f ".${source}" ]; then
         # shellcheck source=/dev/null
-        source ./".${source}-data"
+        source ./".${source}"
     else
         getResources || return 1
     fi
