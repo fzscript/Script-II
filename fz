@@ -66,18 +66,18 @@ do
 done
 
 if [ "$(getprop ro.product.cpu.abi)" = "armeabi-v7a" ]; then
-    echo "Arsitektur CPU \"armeabi-v7a\" perangkat Anda tidak didukung untuk mem-patch."
-    echo "Anda mungkin mendapatkan kesalahan build."
+    echo -e "\e[0;33mArsitektur CPU \"armeabi-v7a\" perangkat Anda tidak didukung untuk mem-patch.\e[0m"
+    echo -e "\e[0;33mAnda mungkin mendapatkan kesalahan build.\e[0m"
     read -N 1 -s -r -p $'Tekan ENTER untuk LANJUTKAN atau <SPASI> untuk KELUAR...\n' key
     if [ "$key" = " " ]; then
-        echo "Keluar!"
+        echo -e "\e[0;32mKeluar!\e[0m"
         exit
     fi
 fi
 
 terminate() {
     clear
-    echo "Skrip dihentikan!"
+    echo -e "\e[0;31mSkrip dihentikan!\e[0m"
     tput cnorm
     exit 1
 }
