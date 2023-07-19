@@ -30,13 +30,13 @@ use_shadow = OFF
 use_colors = ON
 
 # Screen color
-screen_color = (GREEN,BLACK,OFF)
+screen_color = (WHITE,BLACK,OFF)
 
 # Shadow color
 shadow_color = (BLACK,BLACK,OFF)
 
 # Dialog box color
-dialog_color = (GREEN,WHITE,ON)
+dialog_color = (WHITE,BLACK,ON)
 
 # Dialog box title color
 title_color = screen_color
@@ -48,7 +48,7 @@ border_color = screen_color
 button_active_color = (BLACK,YELLOW,OFF)
 
 # Inactive button color
-button_inactive_color = (BLACK,BLACK,OFF)
+button_inactive_color = screen_color
 
 # Active button key color
 button_key_active_color = button_active_color
@@ -120,7 +120,7 @@ darrow_color = uarrow_color
 itemhelp_color = screen_color
 
 # Active form text color
-form_active_text_color = (GREEN,BLACK,OFF,ON)
+form_active_text_color = (WHITE,BLACK,OFF,ON)
 
 # Form text color
 form_text_color = screen_color
