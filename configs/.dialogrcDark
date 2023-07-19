@@ -39,10 +39,10 @@ shadow_color = (BLACK,BLACK,OFF)
 dialog_color = (YELLOW,BLACK,OFF)
 
 # Warna judul kotak dialog
-title_color = (GREEN,BLACK,OFF)
+title_color = (GREEN,BLACK,ON)
 
 # Warna batas kotak dialog
-border_color = (GREEN,BLACK,OFF)
+border_color = (YELLOW,BLACK,ON)
 
 # Warna tombol aktif
 button_active_color = (BLACK,GREEN,ON)
