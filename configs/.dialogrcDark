@@ -30,7 +30,7 @@ use_shadow = OFF
 use_colors = OFF
 
 # Screen color
-screen_color = (WHITE,BLACK,ON)
+screen_color = (BLACK,GREEN,OFF)
 
 # Shadow color
 shadow_color = (BLACK,BLACK,OFF)
@@ -120,7 +120,7 @@ darrow_color = uarrow_color
 itemhelp_color = screen_color
 
 # Active form text color
-form_active_text_color = (WHITE,BLACK,OFF,ON)
+form_active_text_color = (WHITE,BLACK,OFF)
 
 # Form text color
 form_text_color = screen_color
