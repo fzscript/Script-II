@@ -87,7 +87,7 @@ menubox_color = screen_color
 menubox_border_color = border_color
 
 # Warna objek
-item_color = (YELLOW,BLACK,ON)
+item_color = (GREEN,BLACK,OFF)
 
 # Warna objek yang dipilih
 item_selected_color = button_active_color
