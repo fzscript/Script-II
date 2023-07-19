@@ -153,7 +153,9 @@ checkscripts() {
 checkdependencies
 checkscripts
 tput civis
-dialog --keep-window --no-shadow --keep-window --infobox "█▀▀ ▀█\n█▀░ █▄\n█▀█ █▀█ █▀█ ░░█ █▀▀ █▀▀ ▀█▀ ▀ █▀\n█▀▀ █▀▄ █▄█ █▄█ ██▄ █▄▄ ░█░ ░ ▄█\n\n Repo      : Script-II\n Diperbarui: Memeriksa...\n Status    : Memeriksa..." 10 42
+dialog --keep-window --no-shadow --keep-window --infobox "\n
+█▀ █▀▀ █▀█ █ █▀█ ▀█▀ ▄▄ █ █
+\n▄█ █▄▄ █▀▄ █ █▀▀ ░█░ ░░ █ █\n\n Diperbarui: Memeriksa...\n Status    : Memeriksa..." 10 42
 
 if ping -c 1 google.com >/dev/null 2>&1; then
     status=${status:-Online}
@@ -162,9 +164,13 @@ else
 fi
 if [ "$status" == "Online" ]; then
     git pull >/dev/null 2>&1 || (git fetch --all >/dev/null 2>&1 && git reset --hard "@{u}" >/dev/null 2>&1)
-    dialog --no-shadow --infobox "█▀▀ ▀█\n█▀░ █▄\n█▀█ █▀█ █▀█ ░░█ █▀▀ █▀▀ ▀█▀ ▀ █▀\n█▀▀ █▀▄ █▄█ █▄█ ██▄ █▄▄ ░█░ ░ ▄█\n\n Repo      : Script-II\n Diperbarui: $(git log -1 --pretty='format:%cd' --date=format:'%d-%m-%Y | %H:%M UTC+7')\n Status    : $status" 10 42
+    dialog --no-shadow --infobox "\n
+█▀ █▀▀ █▀█ █ █▀█ ▀█▀ ▄▄ █ █
+\n▄█ █▄▄ █▀▄ █ █▀▀ ░█░ ░░ █ █\n\n Diperbarui: $(git log -1 --pretty='format:%cd' --date=format:'%d-%m-%Y | %H:%M UTC+7')\n Status    : $status" 10 42
 else
-    dialog --no-shadow --infobox "█▀▀ ▀█\n█▀░ █▄\n█▀█ █▀█ █▀█ ░░█ █▀▀ █▀▀ ▀█▀ ▀ █▀\n█▀▀ █▀▄ █▄█ █▄█ ██▄ █▄▄ ░█░ ░ ▄█\n\n Repo      : Script-II\n Diperbarui: $(git log -1 --pretty='format:%cd' --date=format:'%d-%m-%Y | %H:%M UTC+7')\n Status    : $status" 10 42
+    dialog --no-shadow --infobox "\n
+█▀ █▀▀ █▀█ █ █▀█ ▀█▀ ▄▄ █ █
+\n▄█ █▄▄ █▀▄ █ █▀▀ ░█░ ░░ █ █\n\n Diperbarui: $(git log -1 --pretty='format:%cd' --date=format:'%d-%m-%Y | %H:%M UTC+7')\n Status    : $status" 10 42
 fi
 cd "$DATA" >/dev/null 2>&1 || true
 bash "$path/main.sh" "$flag"
