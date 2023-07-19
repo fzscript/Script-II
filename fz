@@ -154,7 +154,7 @@ checkdependencies
 checkscripts
 tput civis
 dialog --keep-window --no-shadow --keep-window --infobox "\n    █▀ █▀▀ █▀█ █ █▀█ ▀█▀ ▄▄ █ █
-\n    ▄█ █▄▄ █▀▄ █ █▀▀ ░█░ ░░ █ █\n\nDiperbarui: Memeriksa...\nStatus    : Memeriksa...\n\nPowered by FZ Project" 10 40
+\n    ▄█ █▄▄ █▀▄ █ █▀▀ ░█░ ░░ █ █\n\nStatus    : Memeriksa...\nDiperbarui: Memeriksa...\n\nPowered by FZ Project" 10 40
 
 if ping -c 1 google.com >/dev/null 2>&1; then
     status=${status:-Online}
@@ -164,10 +164,10 @@ fi
 if [ "$status" == "Online" ]; then
     git pull >/dev/null 2>&1 || (git fetch --all >/dev/null 2>&1 && git reset --hard "@{u}" >/dev/null 2>&1)
     dialog --no-shadow --infobox "\n    █▀ █▀▀ █▀█ █ █▀█ ▀█▀ ▄▄ █ █
-\n    ▄█ █▄▄ █▀▄ █ █▀▀ ░█░ ░░ █ █\n\nDiperbarui: $(git log -1 --pretty='format:%cd' --date=format:'%d-%m-%Y | %H:%M UTC+7')\nStatus    : $status\n\nPowered by FZ Project" 10 40
+\n    ▄█ █▄▄ █▀▄ █ █▀▀ ░█░ ░░ █ █\n\nStatus    : $status\nDiperbarui: $(git log -1 --pretty='format:%cd' --date=format:'%d-%m-%Y | %H:%M UTC+7')\n\nPowered by FZ Project" 10 40
 else
     dialog --no-shadow --infobox "\n    █▀ █▀▀ █▀█ █ █▀█ ▀█▀ ▄▄ █ █
-\n    ▄█ █▄▄ █▀▄ █ █▀▀ ░█░ ░░ █ █\n\nDiperbarui: $(git log -1 --pretty='format:%cd' --date=format:'%d-%m-%Y | %H:%M UTC+7')\nStatus    : $status\n\nPowered by FZ Project" 10 40
+\n    ▄█ █▄▄ █▀▄ █ █▀▀ ░█░ ░░ █ █\n\nStatus    : $status\nDiperbarui: $(git log -1 --pretty='format:%cd' --date=format:'%d-%m-%Y | %H:%M UTC+7')\n\nPowered by FZ Project" 10 40
 fi
 cd "$DATA" >/dev/null 2>&1 || true
 bash "$path/main.sh" "$flag"
