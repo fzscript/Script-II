@@ -45,7 +45,7 @@ title_color = screen_color
 border_color = (YELLOW,BLACK,ON)
 
 # Warna tombol aktif
-button_active_color = (BLACK,WHITE,OFF)
+button_active_color = (BLACK,GREEN,OFF)
 
 # Warna tombol non-aktif
 button_inactive_color = screen_color
@@ -87,7 +87,7 @@ menubox_color = screen_color
 menubox_border_color = border_color
 
 # Warna objek
-item_color = (GREEN,BLACK,OFF)
+item_color = (WHITE,BLACK,OFF)
 
 # Warna objek yang dipilih
 item_selected_color = button_active_color
