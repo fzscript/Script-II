@@ -45,7 +45,7 @@ title_color = screen_color
 border_color = screen_color
 
 # Active button color
-button_active_color = (BLACK,YELLOW,OFF)
+button_active_color = (BLACK,WHITE,OFF)
 
 # Inactive button color
 button_inactive_color = screen_color
