@@ -87,10 +87,10 @@ menubox_color = screen_color
 menubox_border_color = border_color
 
 # Warna objek
-item_color = (YELLOW,BLACK,OFF)
+item_color = (GREEN,BLACK,OFF)
 
 # Warna objek yang dipilih
-item_selected_color = (GREEN,BLACK,OFF)
+item_selected_color = (WHITE,BLACK,OFF)
 
 # Warna tag
 tag_color = title_color
