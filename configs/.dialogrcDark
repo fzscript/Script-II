@@ -1,144 +1,144 @@
 #
-# Run-time configuration file for dialog
+# File konfigurasi untuk dialog
 #
-# Custom Dark Config by "decipher3114"
+# Kustom Konfigurasi Gelap by "FZ Project"
 #
 #
-# Types of values:
+# Jenis nilai:
 #
 # Number     -  <number>
 # String     -  "string"
 # Boolean    -  <ON|OFF>
 # Attribute  -  (foreground,background,highlight?,underline?,reverse?)
 
-# Set aspect-ration.
+# Tetapkan rasio aspek.
 aspect = 0
 
-# Set separator (for multiple widgets output).
+# Atur pemisah (untuk output beberapa widget).
 separate_widget = ""
 
-# Set tab-length (for textbox tab-conversion).
+# Tetapkan panjang tab (untuk konversi tab kotak teks).
 tab_len = 0
 
-# Make tab-traversal for checklist, etc., include the list.
+# Buat tab-traversal untuk checklist, dll., Sertakan daftarnya.
 visit_items = OFF
 
-# Shadow dialog boxes? This also turns on color.
+# Kotak dialog bayangan? Ini juga menyalakan warna.
 use_shadow = OFF
 
-# Turn color support ON or OFF
+# ON atau OFF dukungan warna
 use_colors = ON
 
-# Screen color
+# Warna layar
 screen_color = (WHITE,BLACK,OFF)
 
-# Shadow color
+# Warna bayangan
 shadow_color = (BLACK,BLACK,OFF)
 
-# Dialog box color
+# Warna kotak dialog
 dialog_color = screen_color
 
-# Dialog box title color
+# Warna judul kotak dialog
 title_color = screen_color
 
-# Dialog box border color
+# Warna batas kotak dialog
 border_color = screen_color
 
-# Active button color
+# Warna tombol aktif
 button_active_color = (BLACK,WHITE,OFF)
 
-# Inactive button color
+# Warna tombol non-aktif
 button_inactive_color = screen_color
 
-# Active button key color
+# Warna kunci tombol aktif
 button_key_active_color = button_active_color
 
-# Inactive button key color
+# Warna kunci tombol non-aktif
 button_key_inactive_color = screen_color
 
-# Active button label color
+# Warna label tombol aktif
 button_label_active_color = button_active_color
 
-# Inactive button label color
+# Warna label tombol non-aktif
 button_label_inactive_color = screen_color
 
-# Input box color
+# Warna kotak input
 inputbox_color = screen_color
 
-# Input box border color
+# Warna batas kotak input
 inputbox_border_color = screen_color
 
-# Search box color
+# Warna kotak pencarian
 searchbox_color = screen_color
 
-# Search box title color
+# Warna judul kotak pencarian
 searchbox_title_color = title_color
 
-# Search box border color
+# Warna batas kotak pencarian
 searchbox_border_color = border_color
 
-# File position indicator color
+# Warna indikator posisi file
 position_indicator_color = title_color
 
-# Menu box color
+# Warna kotak menu
 menubox_color = screen_color
 
-# Menu box border color
+# Warna batas kotak menu
 menubox_border_color = border_color
 
-# Item color
+# Warna item
 item_color = screen_color
 
-# Selected item color
+# Warna item yang dipilih
 item_selected_color = button_active_color
 
-# Tag color
+# Warna tag
 tag_color = title_color
 
-# Selected tag color
+# Warna tag yang dipilih
 tag_selected_color = button_label_active_color
 
-# Tag key color
+# Warna kunci tag
 tag_key_color = button_key_inactive_color
 
-# Selected tag key color
+# Warna kunci tag yang dipilih
 tag_key_selected_color = button_active_color
 
-# Check box color
+# Warna kotak centang
 check_color = screen_color
 
-# Selected check box color
+# Warna kotak centang yang dipilih
 check_selected_color = button_active_color
 
-# Up arrow color
+# Warna panah atas
 uarrow_color = screen_color
 
-# Down arrow color
+# Warna panah bawah
 darrow_color = uarrow_color
 
-# Item help-text color
+# Warna teks-bantuan item
 itemhelp_color = screen_color
 
-# Active form text color
+# Warna teks form aktif
 form_active_text_color = (WHITE,BLACK,OFF,ON)
 
-# Form text color
+# Warna teks form non-aktif
 form_text_color = screen_color
 
-# Readonly form item color
+# Warna item form hanya dapat dibaca
 form_item_readonly_color = screen_color
 
-# Dialog box gauge color
+# Warna pengukur kotak dialog
 gauge_color = title_color
 
-# Dialog box border2 color
+# Warna batas ke-2 kotak dialog
 border2_color = border_color
 
-# Input box border2 color
+# Warna batas ke-2 kotak input
 inputbox_border2_color = screen_color
 
-# Search box border2 color
+# Warna batas ke-2 kotak pencarian
 searchbox_border2_color = screen_color
 
-# Menu box border2 color
+# Warna batas ke-2 kotak dialog
 menubox_border2_color = screen_color
