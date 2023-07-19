@@ -36,7 +36,7 @@ screen_color = (GREEN,BLACK,OFF)
 shadow_color = (BLACK,BLACK,OFF)
 
 # Dialog box color
-dialog_color = (GREEN,WHITE,OFF)
+dialog_color = (GREEN,WHITE,ON)
 
 # Dialog box title color
 title_color = screen_color
